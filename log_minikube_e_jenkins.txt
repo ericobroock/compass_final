@@ -1,0 +1,259 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Todos os direitos reservados.
+
+Experimente a nova plataforma cruzada PowerShell https://aka.ms/pscore6
+
+PS C:\WINDOWS\system32> ipconfig
+
+Configuração de IP do Windows
+
+
+Adaptador Ethernet VirtualBox Host-Only Network:
+
+   Sufixo DNS específico de conexão. . . . . . :
+   Endereço IPv6 de link local . . . . . . . . : fe80::9d31:68c5:d042:220%11
+   Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.56.1
+   Máscara de Sub-rede . . . . . . . . . . . . : 255.255.255.0
+   Gateway Padrão. . . . . . . . . . . . . . . :
+
+Adaptador Ethernet VirtualBox Host-Only Network #2:
+
+   Sufixo DNS específico de conexão. . . . . . :
+   Endereço IPv6 de link local . . . . . . . . : fe80::d847:77ed:8c40:a272%12
+   Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.33.1
+   Máscara de Sub-rede . . . . . . . . . . . . : 255.255.255.0
+   Gateway Padrão. . . . . . . . . . . . . . . :
+
+Adaptador Ethernet Ethernet:
+
+   Sufixo DNS específico de conexão. . . . . . :
+   Endereço IPv6 de link local . . . . . . . . : fe80::70e7:4d6e:901d:e608%14
+   Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.15.9
+   Máscara de Sub-rede . . . . . . . . . . . . : 255.255.255.0
+   Gateway Padrão. . . . . . . . . . . . . . . : 192.168.15.1
+PS C:\WINDOWS\system32> cd C:\Erico\COMPASS\Trabalho_Final\
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 30000 (guest) => 30000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Disk cannot be decreased in size. 20480 MB requested but disk is already 37888 MB.
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+Timed out while waiting for the machine to boot. This means that
+Vagrant was unable to communicate with the guest machine within
+the configured ("config.vm.boot_timeout" value) time period.
+
+If you look above, you should be able to see the error(s) that
+Vagrant had when attempting to connect to the machine. These errors
+are usually good hints as to what may be wrong.
+
+If you're using a custom box, make sure that networking is properly
+working and you're able to connect to the machine. It is a common
+problem that networking isn't setup properly in these boxes.
+Verify that authentication configurations are also setup properly,
+as well.
+
+If the box appears to be booting properly, you may want to increase
+the timeout ("config.vm.boot_timeout") value.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> default: flag to force provisioning. Provisioners marked to run always will still run.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant reload
+==> default: Attempting graceful shutdown of VM...
+    default: Guest communication could not be established! This is usually because
+    default: SSH is not running, the authentication information was changed,
+    default: or some other networking issue. Vagrant will force halt, if
+    default: capable.
+==> default: Forcing shutdown of VM...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 30000 (guest) => 30000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+Timed out while waiting for the machine to boot. This means that
+Vagrant was unable to communicate with the guest machine within
+the configured ("config.vm.boot_timeout" value) time period.
+
+If you look above, you should be able to see the error(s) that
+Vagrant had when attempting to connect to the machine. These errors
+are usually good hints as to what may be wrong.
+
+If you're using a custom box, make sure that networking is properly
+working and you're able to connect to the machine. It is a common
+problem that networking isn't setup properly in these boxes.
+Verify that authentication configurations are also setup properly,
+as well.
+
+If the box appears to be booting properly, you may want to increase
+the timeout ("config.vm.boot_timeout") value.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant halt
+==> default: Attempting graceful shutdown of VM...
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 30000 (guest) => 30000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Disk cannot be decreased in size. 20480 MB requested but disk is already 37888 MB.
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+==> default: Machine booted and ready!
+[default] GuestAdditions 6.1.32 running --- OK.
+==> default: Checking for guest additions in VM...
+==> default: Configuring and enabling network interfaces...
+==> default: Mounting shared folders...
+    default: /vagrant => C:/Erico/COMPASS/Trabalho_Final
+==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> default: flag to force provisioning. Provisioners marked to run always will still run.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant ssh
+
+Welcome to Oracle Linux Server release 8.5 (GNU/Linux 5.4.17-2136.302.7.2.2.el8uek.x86_64)
+
+The Oracle Linux End-User License Agreement can be viewed here:
+
+  * /usr/share/eula/eula.en_US
+
+For additional packages, updates, documentation and community help, see:
+
+  * https://yum.oracle.com/
+
+Last login: Sat Mar  5 12:43:26 2022 from 10.0.2.2
+
+Welcome to Oracle Linux Server release 8.5 (GNU/Linux 5.4.17-2136.302.7.2.2.el8uek.x86_64)
+
+The Oracle Linux End-User License Agreement can be viewed here:
+
+  * /usr/share/eula/eula.en_US
+
+For additional packages, updates, documentation and community help, see:
+
+  * https://yum.oracle.com/
+
+Last login: Sat Mar  5 12:43:26 2022 from 10.0.2.2
+[vagrant@localhost ~]$ minikube start
+😄  minikube v1.25.2 on Oracle 8.5 (vbox/amd64)
+✨  Automatically selected the docker driver. Other choices: none, ssh
+
+🧯  The requested memory allocation of 2200MiB does not leave room for system overhead (total system  memory: 2907MiB). You may face stability issues.
+💡  Suggestion: Start minikube with less memory allocated: 'minikube start --memory=2200mb'
+
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+💾  Downloading Kubernetes v1.23.3 preload ...
+    > preloaded-images-k8s-v17-v1...: 505.68 MiB / 505.68 MiB  100.00% 3.42 MiB
+    > gcr.io/k8s-minikube/kicbase: 379.06 MiB / 379.06 MiB  100.00% 2.37 MiB p/
+🔥  Creating docker container (CPUs=2, Memory=2200MB) ...
+🐳  Preparing Kubernetes v1.23.3 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+❗  Executing "docker container inspect minikube --format={{.State.Status}}" took an unusually long time: 9.233822203s
+💡  Restarting the docker service may improve performance.
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: default-storageclass, storage-provisioner
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+[vagrant@localhost ~]$ cd /vagrant/
+[vagrant@localhost vagrant]$ ls
+ configs                kubectl.sha256                logs_erros.txt         scripts         Vagrantfile_do_Gabriel
+ jenkins-deploy.yaml    log_erro_minikube.txt         manifests              Tarefa.txt
+ jenkins-service.yaml   log_inicializacao.txt         minikube-linux-amd64  '#Vagrantfile'
+ kubectl                log_minikube_nao_acessa.txt   problemas.txt          Vagrantfile
+[vagrant@localhost vagrant]$ kubectl create namespace jenkins
+namespace/jenkins created
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-deploy.yaml -n jenkins
+deployment.apps/jenkins created
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-service.yaml -n jenkins
+service/jenkins created
+[vagrant@localhost vagrant]$ minikube ip
+192.168.49.2
+[vagrant@localhost vagrant]$ kubectl get svc -n jenkins
+NAME      TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+jenkins   NodePort   10.98.89.47   <none>        8080:30000/TCP   51s
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+NAME                       READY   STATUS              RESTARTS   AGE
+jenkins-789c9b6b84-j9lw6   0/1     ContainerCreating   0          80s
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+NAME                       READY   STATUS              RESTARTS   AGE
+jenkins-789c9b6b84-j9lw6   0/1     ContainerCreating   0          115s
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+NAME                       READY   STATUS              RESTARTS   AGE
+jenkins-789c9b6b84-j9lw6   0/1     ContainerCreating   0          2m11s
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+NAME                       READY   STATUS    RESTARTS   AGE
+jenkins-789c9b6b84-j9lw6   1/1     Running   0          2m38s
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+
+
+
+    <!DOCTYPE html><html lang="en"><head resURL="/static/8ba6b095" data-rooturl="" data-resurl="/static/8ba6b095" data-imagesurl="/static/8ba6b095/images"><title>Starting Jenkins</title><meta name="ROBOTS" content="NOFOLLOW"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/static/8ba6b095/css/simple-page.css" type="text/css"><link rel="stylesheet" href="/static/8ba6b095/css/simple-page.theme.css" type="text/css"><link rel="stylesheet" href="/static/8ba6b095/css/loading.css" type="text/css"></head><body><div class="simple-page" role="main"><div class="modal signup"><div class="signupIntroDefault"><div class="logo"></div><h1 class="loading">
+                            Please wait while Jenkins is getting ready to work
+                            <span>.</span><span>.</span><span>.</span></h1><p>Your browser will reload automatically when Jenkins is ready.</div></div></div><script src="/static/8ba6b095/scripts/loading.js" type="text/javascript"></script></body></html>[vagrant@localhost vagrant]$

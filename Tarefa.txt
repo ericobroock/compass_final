@@ -1,0 +1,23 @@
+Olá, pessoal! 
+
+Tudo bem?
+
+Foi preparado uma atividade final prática para a finalização do Programa de Bolsas. Para essa atividade, dividam-se em duplas! Boa sorte!
+
+Prazo: Apresentações serão feitas no dia 07/03
+ 
+Instruções:
+
+- Instalem uma Virtual Machine utilizando a S.O Oracle Linux - last stable version;
+
+- Instalem o Docker/Kubernetes nessa máquina virtual;
+- Instalem o Jenkins no Kubernetes dessa máquina virtual;
+- Construa os manifests no Kubernetes para um site Wordpress e banco MySQL 5.6, faça o deploy manual de todos os manifests na namespace projetocompass, com exceção do manifest de deployment do Wordpress;
+- Criem um pipeline no jenkins, onde ao disparar esse job, fará a criação de um site WordPress dentro do Kubernetes (dica: ele precisa interagir somente com o manifest de deployment do Wordpress);
+- Validem o funcionamento do site Wordpress através do browser Chrome ou Firefox, através da URI projetofinal.compass.uol
+
+Observação: Nenhuma outra distro Linux está autorizada para essa atividade, utilizem a Oracle Linux - last stable version
+
+Importante: "Cada dupla deverá montar a documentação do que fizeram"
+
+Atenciosamente,

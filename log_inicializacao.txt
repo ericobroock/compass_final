@@ -1,0 +1,537 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Todos os direitos reservados.
+
+Experimente a nova plataforma cruzada PowerShell https://aka.ms/pscore6
+
+PS C:\WINDOWS\system32> cd C:\Erico\COMPASS\Trabalho_Final\
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+Vagrant cannot forward the specified ports on this VM, since they
+would collide with some other application that is already listening
+on these ports. The forwarded port to 81 is already in use
+on the host machine.
+
+To fix this, modify your current project's Vagrantfile to use another
+port. Example, where '1234' would be replaced by a unique host port:
+
+  config.vm.network :forwarded_port, guest: 81, host: 1234
+
+Sometimes, Vagrant will attempt to auto-correct this for you. In this
+case, Vagrant was unable to. This is usually because the guest machine
+is in a state which doesn't allow modifying port forwarding. You could
+try 'vagrant reload' (equivalent of running a halt followed by an up)
+so vagrant can attempt to auto-correct this upon booting. Be warned
+that any unsaved work might be lost.
+PS C:\Erico\COMPASS\Trabalho_Final> ls
+
+
+    Diretório: C:\Erico\COMPASS\Trabalho_Final
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/02/2022     17:09                .vagrant
+d-----        22/02/2022     17:39                configs
+d-----        25/02/2022     19:00                manifests
+d-----        04/03/2022     20:11                scripts
+-a----        08/02/2022     15:43           4847 #Vagrantfile
+-a----        02/03/2022     13:46            505 jenkins-deploy.yaml
+-a----        03/03/2022     12:07            183 jenkins-service.yaml
+-a----        03/03/2022     13:47       46592000 kubectl
+-a----        03/03/2022     13:47             64 kubectl.sha256
+-a----        03/03/2022     14:09          81702 logs_erros.txt
+-a----        03/03/2022     16:56          19865 log_erro_minikube.txt
+-a----        04/03/2022     00:04              0 log_minikube_nao_acessa.txt
+-a----        03/03/2022     13:48       72651748 minikube-linux-amd64
+-a----        02/03/2022     15:26            879 problemas.txt
+-a----        18/02/2022     14:29           1204 Tarefa.txt
+-a----        04/03/2022     21:39           4889 Vagrantfile
+-a----        22/02/2022     17:31            330 Vagrantfile_do_Gabriel
+
+
+PS C:\Erico\COMPASS\Trabalho_Final> rm .\.vagrant\
+
+Confirmar
+O item em C:\Erico\COMPASS\Trabalho_Final\.vagrant\ tem filhos e o parâmetro Recurse não foi especificado. Se você
+continuar, todos os filhos serão removidos com o item. Tem certeza de que deseja continuar?
+[S] Sim  [A] Sim para Todos  [N] Não  [T] Não para Todos  [U] Suspender  [?] Ajuda (o padrão é "S"): s
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'oraclelinux/8'...
+==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Setting the name of the VM: compassers
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 30000 (guest) => 30000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Disk cannot be decreased in size. 20480 MB requested but disk is already 37888 MB.
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+The guest machine entered an invalid state while waiting for it
+to boot. Valid states are 'starting, running'. The machine is in the
+'unknown' state. Please verify everything is configured
+properly and try again.
+
+If the provider you're using has a GUI that comes with it,
+it is often helpful to open that and watch the machine, since the
+GUI often has more helpful error messages than Vagrant can retrieve.
+For example, if you're using VirtualBox, run `vagrant up` while the
+VirtualBox GUI is open.
+
+The primary issue for this error is that the provider you're using
+is not properly configured. This is very rarely a Vagrant issue.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant reload
+==> default: Attempting graceful shutdown of VM...
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 30000 (guest) => 30000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+==> default: Machine booted and ready!
+[default] GuestAdditions seems to be installed (6.1.32) correctly, but not running.
+Redirecting to /bin/systemctl start vboxadd.service
+Redirecting to /bin/systemctl start vboxadd-service.service
+VirtualBox Guest Additions: Starting.
+VirtualBox Guest Additions: Building the VirtualBox Guest Additions kernel
+modules.  This may take a while.
+VirtualBox Guest Additions: To build modules for other installed kernels, run
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup <version>
+VirtualBox Guest Additions: or
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup all
+VirtualBox Guest Additions: Building the modules for kernel
+5.4.17-2136.302.7.2.2.el8uek.x86_64.
+VirtualBox Guest Additions: Running kernel modules will not be replaced until
+the system is restarted
+Restarting VM to apply changes...
+==> default: Attempting graceful shutdown of VM...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+==> default: Configuring and enabling network interfaces...
+==> default: Mounting shared folders...
+    default: /vagrant => C:/Erico/COMPASS/Trabalho_Final
+==> default: Running provisioner: shell...
+    default: Running: inline script
+==> default: Running provisioner: shell...
+    default: Running: inline script
+    default: Iniciando a instalação do docker.
+    default: Realizando update.
+    default: Oracle Linux 8 BaseOS Latest (x86_64)            10 MB/s |  42 MB     00:04
+    default: Oracle Linux 8 Application Stream (x86_64)       11 MB/s |  32 MB     00:02
+    default: Latest Unbreakable Enterprise Kernel Release 6  2.3 MB/s |  37 MB     00:16
+    default: Last metadata expiration check: 0:00:23 ago on Sat 05 Mar 2022 12:32:02 PM UTC.
+    default: Dependencies resolved.
+    default: ============================================================================================
+    default:  Package               Arch    Version                              Repository          Size
+    default: ============================================================================================
+    default: Installing:
+    default:  kernel-uek            x86_64  5.4.17-2136.304.4.3.el8uek           ol8_UEKR6           67 M
+    default:  kernel-uek-devel      x86_64  5.4.17-2136.304.4.3.el8uek           ol8_UEKR6           18 M
+    default: Upgrading:
+    default:  cyrus-sasl-lib        x86_64  2.1.27-6.el8_5                       ol8_baseos_latest  123 k
+    default:  dracut                x86_64  049-191.git20210920.0.2.el8          ol8_baseos_latest  377 k
+    default:  dracut-network        x86_64  049-191.git20210920.0.2.el8          ol8_baseos_latest  111 k
+    default:  dracut-squash         x86_64  049-191.git20210920.0.2.el8          ol8_baseos_latest   63 k
+    default:  glibc                 x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  3.6 M
+    default:  glibc-common          x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  1.3 M
+    default:  glibc-devel           x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  1.0 M
+    default:  glibc-headers         x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  481 k
+    default:  glibc-langpack-en     x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  829 k
+    default:  linux-firmware        noarch  999:20211203-999.9.1.gitb0e898fb.el8 ol8_baseos_latest  206 M
+    default:  oraclelinux-release   x86_64  8:8.5-1.0.8.el8                      ol8_baseos_latest   78 k
+    default:  redhat-release        x86_64  2:8.5-0.8.0.2.el8                    ol8_baseos_latest   19 k
+    default:
+    default: Transaction Summary
+    default: ============================================================================================
+    default: Install   2 Packages
+    default: Upgrade  12 Packages
+    default:
+    default: Total download size: 299 M
+    default: Downloading Packages:
+    default: (1/14): cyrus-sasl-lib-2.1.27-6.el8_5.x86_64.rp 677 kB/s | 123 kB     00:00
+    default: (2/14): dracut-049-191.git20210920.0.2.el8.x86_ 2.8 MB/s | 377 kB     00:00
+    default: (3/14): dracut-network-049-191.git20210920.0.2. 1.8 MB/s | 111 kB     00:00
+    default: (4/14): dracut-squash-049-191.git20210920.0.2.e 1.4 MB/s |  63 kB     00:00
+    default: (5/14): glibc-2.28-164.0.4.el8.x86_64.rpm       4.3 MB/s | 3.6 MB     00:00
+    default: (6/14): glibc-common-2.28-164.0.4.el8.x86_64.rp 3.7 MB/s | 1.3 MB     00:00
+    default: (7/14): glibc-devel-2.28-164.0.4.el8.x86_64.rpm 3.7 MB/s | 1.0 MB     00:00
+    default: (8/14): glibc-headers-2.28-164.0.4.el8.x86_64.r 2.9 MB/s | 481 kB     00:00
+    default: (9/14): glibc-langpack-en-2.28-164.0.4.el8.x86_ 3.6 MB/s | 829 kB     00:00
+    default: (10/14): kernel-uek-devel-5.4.17-2136.304.4.3.e 3.7 MB/s |  18 MB     00:04
+    default: (11/14): oraclelinux-release-8.5-1.0.8.el8.x86_ 2.0 MB/s |  78 kB     00:00
+    default: (12/14): redhat-release-8.5-0.8.0.2.el8.x86_64. 762 kB/s |  19 kB     00:00
+    default: (13/14): kernel-uek-5.4.17-2136.304.4.3.el8uek. 4.5 MB/s |  67 MB     00:14
+    default: (14/14): linux-firmware-20211203-999.9.1.gitb0e 5.4 MB/s | 206 MB     00:38
+    default: --------------------------------------------------------------------------------
+    default: Total                                           7.3 MB/s | 299 MB     00:40
+    default: Running transaction check
+    default: Transaction check succeeded.
+    default: Running transaction test
+    default: Transaction test succeeded.
+    default: Running transaction
+    default:   Preparing        :                                                        1/1
+    default:   Running scriptlet: glibc-common-2.28-164.0.4.el8.x86_64                   1/1
+    default:   Upgrading        : glibc-common-2.28-164.0.4.el8.x86_64                  1/26
+    default:   Upgrading        : glibc-langpack-en-2.28-164.0.4.el8.x86_64             2/26
+    default:   Running scriptlet: glibc-2.28-164.0.4.el8.x86_64                         3/26
+    default:   Upgrading        : glibc-2.28-164.0.4.el8.x86_64                         3/26
+    default:   Running scriptlet: glibc-2.28-164.0.4.el8.x86_64                         3/26
+    default:   Upgrading        : dracut-049-191.git20210920.0.2.el8.x86_64             4/26
+    default:   Running scriptlet: glibc-headers-2.28-164.0.4.el8.x86_64                 5/26
+    default:   Upgrading        : glibc-headers-2.28-164.0.4.el8.x86_64                 5/26
+    default:   Upgrading        : redhat-release-2:8.5-0.8.0.2.el8.x86_64               6/26
+    default:   Upgrading        : oraclelinux-release-8:8.5-1.0.8.el8.x86_64            7/26
+    default:   Upgrading        : linux-firmware-999:20211203-999.9.1.gitb0e898fb.el    8/26
+    default:   Running scriptlet: kernel-uek-5.4.17-2136.304.4.3.el8uek.x86_64          9/26
+    default:   Installing       : kernel-uek-5.4.17-2136.304.4.3.el8uek.x86_64          9/26
+    default:   Running scriptlet: kernel-uek-5.4.17-2136.304.4.3.el8uek.x86_64          9/26
+    default:   Upgrading        : glibc-devel-2.28-164.0.4.el8.x86_64                  10/26
+    default:   Running scriptlet: glibc-devel-2.28-164.0.4.el8.x86_64                  10/26
+    default:   Upgrading        : dracut-network-049-191.git20210920.0.2.el8.x86_64    11/26
+    default:   Upgrading        : dracut-squash-049-191.git20210920.0.2.el8.x86_64     12/26
+    default:   Upgrading        : cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                 13/26
+    default:   Running scriptlet: cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                 13/26
+    default:   Installing       : kernel-uek-devel-5.4.17-2136.304.4.3.el8uek.x86_64   14/26
+    default:   Running scriptlet: kernel-uek-devel-5.4.17-2136.304.4.3.el8uek.x86_64   14/26
+    default:   Cleanup          : cyrus-sasl-lib-2.1.27-5.el8.x86_64                   15/26
+    default:   Running scriptlet: cyrus-sasl-lib-2.1.27-5.el8.x86_64                   15/26
+    default:   Running scriptlet: glibc-devel-2.28-164.0.3.el8.x86_64                  16/26
+    default:   Cleanup          : glibc-devel-2.28-164.0.3.el8.x86_64                  16/26
+    default:   Cleanup          : glibc-headers-2.28-164.0.3.el8.x86_64                17/26
+    default:   Cleanup          : oraclelinux-release-8:8.5-1.0.7.el8.x86_64           18/26
+    default:   Cleanup          : dracut-squash-049-191.git20210920.0.1.el8.x86_64     19/26
+    default:   Cleanup          : dracut-network-049-191.git20210920.0.1.el8.x86_64    20/26
+    default:   Cleanup          : redhat-release-2:8.5-0.8.0.1.el8.x86_64              21/26
+    default:   Cleanup          : linux-firmware-999:20210617-999.8.git0f66b74b.el8.   22/26
+    default:   Cleanup          : dracut-049-191.git20210920.0.1.el8.x86_64            23/26
+    default:   Cleanup          : glibc-2.28-164.0.3.el8.x86_64                        24/26
+    default:   Cleanup          : glibc-langpack-en-2.28-164.0.3.el8.x86_64            25/26
+    default:   Cleanup          : glibc-common-2.28-164.0.3.el8.x86_64                 26/26
+    default:   Running scriptlet: kernel-uek-5.4.17-2136.304.4.3.el8uek.x86_64         26/26
+    default:   Running scriptlet: glibc-common-2.28-164.0.3.el8.x86_64                 26/26
+    default:   Running scriptlet: glibc-common-2.28-164.0.4.el8.x86_64                 26/26
+    default:   Verifying        : kernel-uek-5.4.17-2136.304.4.3.el8uek.x86_64          1/26
+    default:   Verifying        : kernel-uek-devel-5.4.17-2136.304.4.3.el8uek.x86_64    2/26
+    default:   Verifying        : cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                  3/26
+    default:   Verifying        : cyrus-sasl-lib-2.1.27-5.el8.x86_64                    4/26
+    default:   Verifying        : dracut-049-191.git20210920.0.2.el8.x86_64             5/26
+    default:   Verifying        : dracut-049-191.git20210920.0.1.el8.x86_64             6/26
+    default:   Verifying        : dracut-network-049-191.git20210920.0.2.el8.x86_64     7/26
+    default:   Verifying        : dracut-network-049-191.git20210920.0.1.el8.x86_64     8/26
+    default:   Verifying        : dracut-squash-049-191.git20210920.0.2.el8.x86_64      9/26
+    default:   Verifying        : dracut-squash-049-191.git20210920.0.1.el8.x86_64     10/26
+    default:   Verifying        : glibc-2.28-164.0.4.el8.x86_64                        11/26
+    default:   Verifying        : glibc-2.28-164.0.3.el8.x86_64                        12/26
+    default:   Verifying        : glibc-common-2.28-164.0.4.el8.x86_64                 13/26
+    default:   Verifying        : glibc-common-2.28-164.0.3.el8.x86_64                 14/26
+    default:   Verifying        : glibc-devel-2.28-164.0.4.el8.x86_64                  15/26
+    default:   Verifying        : glibc-devel-2.28-164.0.3.el8.x86_64                  16/26
+    default:   Verifying        : glibc-headers-2.28-164.0.4.el8.x86_64                17/26
+    default:   Verifying        : glibc-headers-2.28-164.0.3.el8.x86_64                18/26
+    default:   Verifying        : glibc-langpack-en-2.28-164.0.4.el8.x86_64            19/26
+    default:   Verifying        : glibc-langpack-en-2.28-164.0.3.el8.x86_64            20/26
+    default:   Verifying        : linux-firmware-999:20211203-999.9.1.gitb0e898fb.el   21/26
+    default:   Verifying        : linux-firmware-999:20210617-999.8.git0f66b74b.el8.   22/26
+    default:   Verifying        : oraclelinux-release-8:8.5-1.0.8.el8.x86_64           23/26
+    default:   Verifying        : oraclelinux-release-8:8.5-1.0.7.el8.x86_64           24/26
+    default:   Verifying        : redhat-release-2:8.5-0.8.0.2.el8.x86_64              25/26
+    default:   Verifying        : redhat-release-2:8.5-0.8.0.1.el8.x86_64              26/26
+    default:
+    default: Upgraded:
+    default:   cyrus-sasl-lib-2.1.27-6.el8_5.x86_64
+    default:   dracut-049-191.git20210920.0.2.el8.x86_64
+    default:   dracut-network-049-191.git20210920.0.2.el8.x86_64
+    default:   dracut-squash-049-191.git20210920.0.2.el8.x86_64
+    default:   glibc-2.28-164.0.4.el8.x86_64
+    default:   glibc-common-2.28-164.0.4.el8.x86_64
+    default:   glibc-devel-2.28-164.0.4.el8.x86_64
+    default:   glibc-headers-2.28-164.0.4.el8.x86_64
+    default:   glibc-langpack-en-2.28-164.0.4.el8.x86_64
+    default:   linux-firmware-999:20211203-999.9.1.gitb0e898fb.el8.noarch
+    default:   oraclelinux-release-8:8.5-1.0.8.el8.x86_64
+    default:   redhat-release-2:8.5-0.8.0.2.el8.x86_64
+    default: Installed:
+    default:   kernel-uek-5.4.17-2136.304.4.3.el8uek.x86_64
+    default:   kernel-uek-devel-5.4.17-2136.304.4.3.el8uek.x86_64
+    default:
+    default: Complete!
+    default: Instalando yum-utils.
+    default: Last metadata expiration check: 0:06:45 ago on Sat 05 Mar 2022 12:32:02 PM UTC.
+    default: Dependencies resolved.
+    default: ================================================================================
+    default:  Package       Arch       Version                   Repository             Size
+    default: ================================================================================
+    default: Installing:
+    default:  yum-utils     noarch     4.0.21-4.0.1.el8_5        ol8_baseos_latest      73 k
+    default:
+    default: Transaction Summary
+    default: ================================================================================
+    default: Install  1 Package
+    default:
+    default: Total download size: 73 k
+    default: Installed size: 23 k
+    default: Downloading Packages:
+    default: yum-utils-4.0.21-4.0.1.el8_5.noarch.rpm         614 kB/s |  73 kB     00:00
+    default: --------------------------------------------------------------------------------
+    default: Total                                           573 kB/s |  73 kB     00:00
+    default: Running transaction check
+    default: Transaction check succeeded.
+    default: Running transaction test
+    default: Transaction test succeeded.
+    default: Running transaction
+    default:   Preparing        :                                                        1/1
+    default:   Installing       : yum-utils-4.0.21-4.0.1.el8_5.noarch                    1/1
+    default:   Running scriptlet: yum-utils-4.0.21-4.0.1.el8_5.noarch                    1/1
+    default:   Verifying        : yum-utils-4.0.21-4.0.1.el8_5.noarch                    1/1
+    default:
+    default: Installed:
+    default:   yum-utils-4.0.21-4.0.1.el8_5.noarch
+    default:
+    default: Complete!
+    default: Inserindo caminho para repositório do docker.
+    default: Adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+    default: Docker CE Stable - x86_64                        94 kB/s |  20 kB     00:00
+    default: Dependencies resolved.
+    default: Nothing to do.
+    default: Complete!
+    default: Instalando o docker.
+    default: Last metadata expiration check: 0:00:06 ago on Sat 05 Mar 2022 12:38:55 PM UTC.
+    default: Dependencies resolved.
+    default: ==========================================================================================================
+    default:  Package                        Arch    Version                                   Repository          Size
+    default: ==========================================================================================================
+    default: Installing:
+    default:  containerd.io                  x86_64  1.4.13-3.1.el8                            docker-ce-stable    28 M
+    default:  docker-ce                      x86_64  3:20.10.12-3.el8                          docker-ce-stable    22 M
+    default:  docker-ce-cli                  x86_64  1:20.10.12-3.el8                          docker-ce-stable    30 M
+    default: Installing dependencies:
+    default:  checkpolicy                    x86_64  2.9-1.el8                                 ol8_baseos_latest  346 k
+    default:  container-selinux              noarch  2:2.173.0-1.module+el8.5.0+20494+0311868c ol8_appstream       57 k
+    default:  docker-ce-rootless-extras      x86_64  20.10.12-3.el8                            docker-ce-stable   4.6 M
+    default:  docker-scan-plugin             x86_64  0.12.0-3.el8                              docker-ce-stable   3.7 M
+    default:  fuse-common                    x86_64  3.2.1-12.0.3.el8                          ol8_baseos_latest   22 k
+    default:  fuse-overlayfs                 x86_64  1.8-1.module+el8.5.0+20494+0311868c       ol8_appstream       73 k
+    default:  fuse3                          x86_64  3.2.1-12.0.3.el8                          ol8_baseos_latest   51 k
+    default:  fuse3-libs                     x86_64  3.2.1-12.0.3.el8                          ol8_baseos_latest   95 k
+    default:  libcgroup                      x86_64  0.41-19.el8                               ol8_baseos_latest   70 k
+    default:  libslirp                       x86_64  4.4.0-1.module+el8.5.0+20416+d687fed7     ol8_appstream       70 k
+    default:  policycoreutils-python-utils   noarch  2.9-16.0.1.el8                            ol8_baseos_latest  252 k
+    default:  python3-audit                  x86_64  3.0-0.17.20191104git1c2f876.el8           ol8_baseos_latest   86 k
+    default:  python3-libsemanage            x86_64  2.9-6.el8                                 ol8_baseos_latest  127 k
+    default:  python3-policycoreutils        noarch  2.9-16.0.1.el8                            ol8_baseos_latest  2.2 M
+    default:  python3-setools                x86_64  4.3.0-2.el8                               ol8_baseos_latest  626 k
+    default:  slirp4netns                    x86_64  1.1.8-1.module+el8.5.0+20416+d687fed7     ol8_appstream       51 k
+    default: Enabling module streams:
+    default:  container-tools                        ol8
+    default:
+    default: Transaction Summary
+    default: ==========================================================================================================
+    default: Install  19 Packages
+    default:
+    default: Total download size: 93 M
+    default: Installed size: 388 M
+    default: Downloading Packages:
+    default: (1/19): docker-ce-cli-20.10.12-3.el8.x86_64.rpm 6.0 MB/s |  30 MB     00:05
+    default: (2/19): containerd.io-1.4.13-3.1.el8.x86_64.rpm 4.9 MB/s |  28 MB     00:05
+    default: (3/19): docker-ce-20.10.12-3.el8.x86_64.rpm     3.4 MB/s |  22 MB     00:06
+    default: (4/19): docker-ce-rootless-extras-20.10.12-3.el 2.8 MB/s | 4.6 MB     00:01
+    default: (5/19): checkpolicy-2.9-1.el8.x86_64.rpm        1.5 MB/s | 346 kB     00:00
+    default: (6/19): fuse-common-3.2.1-12.0.3.el8.x86_64.rpm 263 kB/s |  22 kB     00:00
+    default: (7/19): fuse3-3.2.1-12.0.3.el8.x86_64.rpm       1.0 MB/s |  51 kB     00:00
+    default: (8/19): fuse3-libs-3.2.1-12.0.3.el8.x86_64.rpm  2.1 MB/s |  95 kB     00:00
+    default: (9/19): libcgroup-0.41-19.el8.x86_64.rpm        1.1 MB/s |  70 kB     00:00
+    default: (10/19): policycoreutils-python-utils-2.9-16.0. 3.7 MB/s | 252 kB     00:00
+    default: (11/19): python3-audit-3.0-0.17.20191104git1c2f 1.7 MB/s |  86 kB     00:00
+    default: (12/19): python3-libsemanage-2.9-6.el8.x86_64.r 1.7 MB/s | 127 kB     00:00
+    default: (13/19): docker-scan-plugin-0.12.0-3.el8.x86_64 2.6 MB/s | 3.7 MB     00:01
+    default: (14/19): python3-setools-4.3.0-2.el8.x86_64.rpm 2.0 MB/s | 626 kB     00:00
+    default: (15/19): container-selinux-2.173.0-1.module+el8 609 kB/s |  57 kB     00:00
+    default: (16/19): fuse-overlayfs-1.8-1.module+el8.5.0+20 1.9 MB/s |  73 kB     00:00
+    default: (17/19): libslirp-4.4.0-1.module+el8.5.0+20416+ 1.9 MB/s |  70 kB     00:00
+    default: (18/19): python3-policycoreutils-2.9-16.0.1.el8 4.3 MB/s | 2.2 MB     00:00
+    default: (19/19): slirp4netns-1.1.8-1.module+el8.5.0+204 467 kB/s |  51 kB     00:00
+    default: --------------------------------------------------------------------------------
+    default: Total                                            12 MB/s |  93 MB     00:07
+    default: Docker CE Stable - x86_64                        16 kB/s | 1.6 kB     00:00
+    default: Importing GPG key 0x621E9F35:
+    default:  Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+    default:  Fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+    default:  From       : https://download.docker.com/linux/centos/gpg
+    default: Key imported successfully
+    default: Running transaction check
+    default: Transaction check succeeded.
+    default: Running transaction test
+    default: Transaction test succeeded.
+    default: Running transaction
+    default:   Preparing        :                                                        1/1
+    default:   Installing       : docker-scan-plugin-0.12.0-3.el8.x86_64                1/19
+    default:   Running scriptlet: docker-scan-plugin-0.12.0-3.el8.x86_64                1/19
+    default:   Installing       : docker-ce-cli-1:20.10.12-3.el8.x86_64                 2/19
+    default:   Running scriptlet: docker-ce-cli-1:20.10.12-3.el8.x86_64                 2/19
+    default:   Installing       : libslirp-4.4.0-1.module+el8.5.0+20416+d687fed7.x86    3/19
+    default:   Installing       : slirp4netns-1.1.8-1.module+el8.5.0+20416+d687fed7.    4/19
+    default:   Installing       : python3-setools-4.3.0-2.el8.x86_64                    5/19
+    default:   Installing       : python3-libsemanage-2.9-6.el8.x86_64                  6/19
+    default:   Installing       : python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_    7/19
+    default:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          8/19
+    default:   Installing       : libcgroup-0.41-19.el8.x86_64                          8/19
+    default:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          8/19
+    default:   Installing       : fuse3-libs-3.2.1-12.0.3.el8.x86_64                    9/19
+    default:   Running scriptlet: fuse3-libs-3.2.1-12.0.3.el8.x86_64                    9/19
+    default:   Installing       : fuse-common-3.2.1-12.0.3.el8.x86_64                  10/19
+    default:   Installing       : fuse3-3.2.1-12.0.3.el8.x86_64                        11/19
+    default:   Installing       : fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c   12/19
+    default:   Running scriptlet: fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c   12/19
+    default:   Installing       : checkpolicy-2.9-1.el8.x86_64                         13/19
+    default:   Installing       : python3-policycoreutils-2.9-16.0.1.el8.noarch        14/19
+    default:   Installing       : policycoreutils-python-utils-2.9-16.0.1.el8.noarch   15/19
+    default:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Installing       : container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Installing       : containerd.io-1.4.13-3.1.el8.x86_64                  17/19
+    default:   Running scriptlet: containerd.io-1.4.13-3.1.el8.x86_64                  17/19
+    default:   Installing       : docker-ce-rootless-extras-20.10.12-3.el8.x86_64      18/19
+    default:   Running scriptlet: docker-ce-rootless-extras-20.10.12-3.el8.x86_64      18/19
+    default:   Installing       : docker-ce-3:20.10.12-3.el8.x86_64                    19/19
+    default:   Running scriptlet: docker-ce-3:20.10.12-3.el8.x86_64                    19/19
+    default:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+20494   19/19
+    default:   Running scriptlet: docker-ce-3:20.10.12-3.el8.x86_64                    19/19
+    default:   Verifying        : containerd.io-1.4.13-3.1.el8.x86_64                   1/19
+    default:   Verifying        : docker-ce-3:20.10.12-3.el8.x86_64                     2/19
+    default:   Verifying        : docker-ce-cli-1:20.10.12-3.el8.x86_64                 3/19
+    default:   Verifying        : docker-ce-rootless-extras-20.10.12-3.el8.x86_64       4/19
+    default:   Verifying        : docker-scan-plugin-0.12.0-3.el8.x86_64                5/19
+    default:   Verifying        : checkpolicy-2.9-1.el8.x86_64                          6/19
+    default:   Verifying        : fuse-common-3.2.1-12.0.3.el8.x86_64                   7/19
+    default:   Verifying        : fuse3-3.2.1-12.0.3.el8.x86_64                         8/19
+    default:   Verifying        : fuse3-libs-3.2.1-12.0.3.el8.x86_64                    9/19
+    default:   Verifying        : libcgroup-0.41-19.el8.x86_64                         10/19
+    default:   Verifying        : policycoreutils-python-utils-2.9-16.0.1.el8.noarch   11/19
+    default:   Verifying        : python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_   12/19
+    default:   Verifying        : python3-libsemanage-2.9-6.el8.x86_64                 13/19
+    default:   Verifying        : python3-policycoreutils-2.9-16.0.1.el8.noarch        14/19
+    default:   Verifying        : python3-setools-4.3.0-2.el8.x86_64                   15/19
+    default:   Verifying        : container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Verifying        : fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c   17/19
+    default:   Verifying        : libslirp-4.4.0-1.module+el8.5.0+20416+d687fed7.x86   18/19
+    default:   Verifying        : slirp4netns-1.1.8-1.module+el8.5.0+20416+d687fed7.   19/19
+    default:
+    default: Installed:
+    default:   checkpolicy-2.9-1.el8.x86_64
+    default:   container-selinux-2:2.173.0-1.module+el8.5.0+20494+0311868c.noarch
+    default:   containerd.io-1.4.13-3.1.el8.x86_64
+    default:   docker-ce-3:20.10.12-3.el8.x86_64
+    default:   docker-ce-cli-1:20.10.12-3.el8.x86_64
+    default:   docker-ce-rootless-extras-20.10.12-3.el8.x86_64
+    default:   docker-scan-plugin-0.12.0-3.el8.x86_64
+    default:   fuse-common-3.2.1-12.0.3.el8.x86_64
+    default:   fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c.x86_64
+    default:   fuse3-3.2.1-12.0.3.el8.x86_64
+    default:   fuse3-libs-3.2.1-12.0.3.el8.x86_64
+    default:   libcgroup-0.41-19.el8.x86_64
+    default:   libslirp-4.4.0-1.module+el8.5.0+20416+d687fed7.x86_64
+    default:   policycoreutils-python-utils-2.9-16.0.1.el8.noarch
+    default:   python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64
+    default:   python3-libsemanage-2.9-6.el8.x86_64
+    default:   python3-policycoreutils-2.9-16.0.1.el8.noarch
+    default:   python3-setools-4.3.0-2.el8.x86_64
+    default:   slirp4netns-1.1.8-1.module+el8.5.0+20416+d687fed7.x86_64
+    default:
+    default: Complete!
+    default: Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+    default: Registrando o usuário vagrant para utilizar o docker.
+    default: groupadd: group 'docker' already exists
+    default: Finalização da instalação do docker.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant ssh
+
+Welcome to Oracle Linux Server release 8.5 (GNU/Linux 5.4.17-2136.302.7.2.2.el8uek.x86_64)
+Welcome to Oracle Linux Server release 8.5 (GNU/Linux 5.4.17-2136.302.7.2.2.el8uek.x86_64)
+
+The Oracle Linux End-User License Agreement can be viewed here:
+
+  * /usr/share/eula/eula.en_US
+
+For additional packages, updates, documentation and community help, see:
+
+  * https://yum.oracle.com/
+
+[vagrant@localhost ~]$ cd /vagrant/
+[vagrant@localhost vagrant]$ ls
+ configs                kubectl.sha256                manifests              Tarefa.txt
+ jenkins-deploy.yaml    log_erro_minikube.txt         minikube-linux-amd64  '#Vagrantfile'
+ jenkins-service.yaml   log_minikube_nao_acessa.txt   problemas.txt          Vagrantfile
+ kubectl                logs_erros.txt                scripts                Vagrantfile_do_Gabriel
+[vagrant@localhost vagrant]$ sh ./scripts/kubectl.sh
+Baixando binário do kubectl.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   154  100   154    0     0    729      0 --:--:-- --:--:-- --:--:--   733
+100 44.4M  100 44.4M    0     0  5326k      0  0:00:08  0:00:08 --:--:-- 5548k
+Validando binário baixado
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   154  100   154    0     0    693      0 --:--:-- --:--:-- --:--:--   696
+100    64  100    64    0     0    118      0 --:--:-- --:--:-- --:--:--   673
+kubectl: OK
+Instalando o kubectl
+Mostrando versão instalada:
+Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.4", GitCommit:"e6c093d87ea4cbb530a7b2ae91e54c0842d8308a", GitTreeState:"clean", BuildDate:"2022-02-16T12:38:05Z", GoVersion:"go1.17.7", Compiler:"gc", Platform:"linux/amd64"}
+[vagrant@localhost vagrant]$ sh ./scripts/minikube.sh
+Instalando o minikube.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 69.2M  100 69.2M    0     0  5594k      0  0:00:12  0:00:12 --:--:-- 5337k
+[vagrant@localhost vagrant]$

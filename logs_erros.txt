@@ -1,0 +1,1248 @@
+[vagrant@localhost .kube]$ [vagrant@localhost .kube]$
+[vagrant@localhost .kube]$ clear
+[vagrant@localhost .kube]$ ls
+cache  config
+[vagrant@localhost .kube]$ cd ~
+[vagrant@localhost ~]$ minikube start
+😄  minikube v1.25.2 on Oracle 8.5 (vbox/amd64)
+✨  Using the docker driver based on existing profile
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🏃  Updating the running docker "minikube" container ...
+🐳  Preparing Kubernetes v1.23.3 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+
+Message from syslogd@localhost at Mar  3 14:06:01 ...
+ kernel:watchdog: BUG: soft lockup - CPU#1 stuck for 54s! [etcd:19603]
+
+Message from syslogd@localhost at Mar  3 14:06:01 ...
+ kernel:watchdog: BUG: soft lockup - CPU#0 stuck for 54s! [swapper/0:0]
+❌  Problems detected in kube-proxy [b133eb0c2cd4]:
+    E0303 13:41:23.500232       1 proxier.go:1600] "can't open port, skipping it" err="listen tcp4 :30000: bind: address already in use" port={Description:nodePort for jenkins/jenkins IP: IPFamily:4 Port:30000 Protocol:TCP}
+🤦  Unable to restart cluster, will reset it: apiserver health: apiserver healthz never reported healthy: cluster wait timed out during healthz check
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: default-storageclass, storage-provisioner
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+[vagrant@localhost ~]$
+Message from syslogd@localhost at Mar  3 14:11:05 ...
+ kernel:watchdog: BUG: soft lockup - CPU#0 stuck for 36s! [swapper/0:0]
+^C
+[vagrant@localhost ~]$ minikube cluster-infor
+Error: unknown command "cluster-infor" for "minikube"
+Run 'minikube --help' for usage.
+[vagrant@localhost ~]$ minikube cluster-info
+Error: unknown command "cluster-info" for "minikube"
+Run 'minikube --help' for usage.
+[vagrant@localhost ~]$ minikube cluster info
+Error: unknown command "cluster" for "minikube"
+Run 'minikube --help' for usage.
+[vagrant@localhost ~]$ minikube ip
+192.168.49.2
+[vagrant@localhost ~]$ kubectl get pods -n jenkins
+No resources found in jenkins namespace.
+[vagrant@localhost ~]$ kubectl create namespace jenkins
+namespace/jenkins created
+[vagrant@localhost ~]$ ls
+[vagrant@localhost ~]$ cd /vagrant/
+[vagrant@localhost vagrant]$ çs
+-bash: çs: command not found
+[vagrant@localhost vagrant]$ ls
+ configs                kubectl          minikube-linux-amd64   Tarefa.txt      Vagrantfile_do_Gabriel
+ jenkins-deploy.yaml    kubectl.sha256   problemas.txt         '#Vagrantfile'
+ jenkins-service.yaml   manifests        scripts                Vagrantfile
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-deploy.yaml -n jenkins
+deployment.apps/jenkins created
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-service.yaml -n jenkins
+Unable to connect to the server: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-service.yaml -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-service.yaml -n jenkins
+service/jenkins created
+[vagrant@localhost vagrant]$ kubectl get services -n jenkins
+^[[BUnable to connect to the server: http2: client connection lost
+[vagrant@localhost vagrant]$ kubectl get services -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl get svc -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl get pods
+error: the server doesn't have a resource type "pods"
+[vagrant@localhost vagrant]$ minikube status
+^C
+[vagrant@localhost vagrant]$ minikube stop
+✋  Stopping node "minikube"  ...
+🛑  Powering off "minikube" via SSH ...
+🛑  1 node stopped.
+[vagrant@localhost vagrant]$ minikube start
+😄  minikube v1.25.2 on Oracle 8.5 (vbox/amd64)
+✨  Using the docker driver based on existing profile
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🔄  Restarting existing docker container for "minikube" ...
+🐳  Preparing Kubernetes v1.23.3 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+
+Message from syslogd@localhost at Mar  3 14:30:47 ...
+ kernel:watchdog: BUG: soft lockup - CPU#0 stuck for 86s! [swapper/0:0]
+❌  Problems detected in kube-proxy [eeac415579ab]:
+    E0303 14:17:26.132896       1 proxier.go:1600] "can't open port, skipping it" err="listen tcp4 :30010: bind: address already in use" port={Description:nodePort for jenkins/jenkins IP: IPFamily:4 Port:30010 Protocol:TCP}
+^C
+[vagrant@localhost vagrant]$ ^C
+[vagrant@localhost vagrant]$ minikube delete --al
+Error: unknown flag: --al
+See 'minikube delete --help' for usage.
+[vagrant@localhost vagrant]$ minikube delete --all
+🔥  Deleting "minikube" in docker ...
+🔥  Removing /home/vagrant/.minikube/machines/minikube ...
+💀  Removed all traces of the "minikube" cluster.
+🔥  Successfully deleted all profiles
+[vagrant@localhost vagrant]$ minikube start
+😄  minikube v1.25.2 on Oracle 8.5 (vbox/amd64)
+✨  Automatically selected the docker driver. Other choices: none, ssh
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🔥  Creating docker container (CPUs=2, Memory=2200MB) ...
+🐳  Preparing Kubernetes v1.23.3 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+💢  initialization failed, will try again: wait: /bin/bash -c "sudo env PATH="/var/lib/minikube/binaries/v1.23.3:$PATH" kubeadm init --config /var/tmp/minikube/kubeadm.yaml  --ignore-preflight-errors=DirAvailable--etc-kubernetes-manifests,DirAvailable--var-lib-minikube,DirAvailable--var-lib-minikube-etcd,FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml,FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml,FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml,FileAvailable--etc-kubernetes-manifests-etcd.yaml,Port-10250,Swap,Mem,SystemVerification,FileContent--proc-sys-net-bridge-bridge-nf-call-iptables": Process exited with status 1
+stdout:
+[init] Using Kubernetes version: v1.23.3
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[certs] Using certificateDir folder "/var/lib/minikube/certs"
+[certs] Using existing ca certificate authority
+[certs] Using existing apiserver certificate and key on disk
+[certs] Generating "apiserver-kubelet-client" certificate and key
+[certs] Generating "front-proxy-ca" certificate and key
+[certs] Generating "front-proxy-client" certificate and key
+[certs] Generating "etcd/ca" certificate and key
+[certs] Generating "etcd/server" certificate and key
+[certs] etcd/server serving cert is signed for DNS names [localhost minikube] and IPs [192.168.49.2 127.0.0.1 ::1]
+[certs] Generating "etcd/peer" certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [localhost minikube] and IPs [192.168.49.2 127.0.0.1 ::1]
+[certs] Generating "etcd/healthcheck-client" certificate and key
+[certs] Generating "apiserver-etcd-client" certificate and key
+[certs] Generating "sa" key and public key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Starting the kubelet
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[kubelet-check] Initial timeout of 40s passed.
+
+        Unfortunately, an error has occurred:
+                timed out waiting for the condition
+
+        This error is likely caused by:
+                - The kubelet is not running
+                - The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
+
+        If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
+                - 'systemctl status kubelet'
+                - 'journalctl -xeu kubelet'
+
+        Additionally, a control plane component may have crashed or exited when started by the container runtime.
+        To troubleshoot, list all containers using your preferred container runtimes CLI.
+
+        Here is one example how you may list all Kubernetes containers running in docker:
+                - 'docker ps -a | grep kube | grep -v pause'
+                Once you have found the failing container, you can inspect its logs with:
+                - 'docker logs CONTAINERID'
+
+
+stderr:
+        [WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+        [WARNING Service-Kubelet]: kubelet service is not enabled, please run 'systemctl enable kubelet.service'
+error execution phase wait-control-plane: couldn't initialize a Kubernetes cluster
+To see the stack trace of this error execute with --v=5 or higher
+
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+
+💣  Error starting cluster: wait: /bin/bash -c "sudo env PATH="/var/lib/minikube/binaries/v1.23.3:$PATH" kubeadm init --config /var/tmp/minikube/kubeadm.yaml  --ignore-preflight-errors=DirAvailable--etc-kubernetes-manifests,DirAvailable--var-lib-minikube,DirAvailable--var-lib-minikube-etcd,FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml,FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml,FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml,FileAvailable--etc-kubernetes-manifests-etcd.yaml,Port-10250,Swap,Mem,SystemVerification,FileContent--proc-sys-net-bridge-bridge-nf-call-iptables": Process exited with status 1
+stdout:
+[init] Using Kubernetes version: v1.23.3
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[certs] Using certificateDir folder "/var/lib/minikube/certs"
+[certs] Using existing ca certificate authority
+[certs] Using existing apiserver certificate and key on disk
+[certs] Using existing apiserver-kubelet-client certificate and key on disk
+[certs] Using existing front-proxy-ca certificate authority
+[certs] Using existing front-proxy-client certificate and key on disk
+[certs] Using existing etcd/ca certificate authority
+[certs] Using existing etcd/server certificate and key on disk
+[certs] Using existing etcd/peer certificate and key on disk
+[certs] Using existing etcd/healthcheck-client certificate and key on disk
+[certs] Using existing apiserver-etcd-client certificate and key on disk
+[certs] Using the existing "sa" key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Starting the kubelet
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[kubelet-check] Initial timeout of 40s passed.
+
+        Unfortunately, an error has occurred:
+                timed out waiting for the condition
+
+        This error is likely caused by:
+                - The kubelet is not running
+                - The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
+
+        If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
+                - 'systemctl status kubelet'
+                - 'journalctl -xeu kubelet'
+
+        Additionally, a control plane component may have crashed or exited when started by the container runtime.
+        To troubleshoot, list all containers using your preferred container runtimes CLI.
+
+        Here is one example how you may list all Kubernetes containers running in docker:
+                - 'docker ps -a | grep kube | grep -v pause'
+                Once you have found the failing container, you can inspect its logs with:
+                - 'docker logs CONTAINERID'
+
+
+stderr:
+        [WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+        [WARNING Service-Kubelet]: kubelet service is not enabled, please run 'systemctl enable kubelet.service'
+error execution phase wait-control-plane: couldn't initialize a Kubernetes cluster
+To see the stack trace of this error execute with --v=5 or higher
+
+
+╭───────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                           │
+│    😿  If the above advice does not help, please let us know:                             │
+│    👉  https://github.com/kubernetes/minikube/issues/new/choose                           │
+│                                                                                           │
+│    Please run `minikube logs --file=logs.txt` and attach logs.txt to the GitHub issue.    │
+│                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────╯
+
+❌  Exiting due to K8S_KUBELET_NOT_RUNNING: wait: /bin/bash -c "sudo env PATH="/var/lib/minikube/binaries/v1.23.3:$PATH" kubeadm init --config /var/tmp/minikube/kubeadm.yaml  --ignore-preflight-errors=DirAvailable--etc-kubernetes-manifests,DirAvailable--var-lib-minikube,DirAvailable--var-lib-minikube-etcd,FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml,FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml,FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml,FileAvailable--etc-kubernetes-manifests-etcd.yaml,Port-10250,Swap,Mem,SystemVerification,FileContent--proc-sys-net-bridge-bridge-nf-call-iptables": Process exited with status 1
+stdout:
+[init] Using Kubernetes version: v1.23.3
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[certs] Using certificateDir folder "/var/lib/minikube/certs"
+[certs] Using existing ca certificate authority
+[certs] Using existing apiserver certificate and key on disk
+[certs] Using existing apiserver-kubelet-client certificate and key on disk
+[certs] Using existing front-proxy-ca certificate authority
+[certs] Using existing front-proxy-client certificate and key on disk
+[certs] Using existing etcd/ca certificate authority
+[certs] Using existing etcd/server certificate and key on disk
+[certs] Using existing etcd/peer certificate and key on disk
+[certs] Using existing etcd/healthcheck-client certificate and key on disk
+[certs] Using existing apiserver-etcd-client certificate and key on disk
+[certs] Using the existing "sa" key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Starting the kubelet
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[kubelet-check] Initial timeout of 40s passed.
+
+        Unfortunately, an error has occurred:
+                timed out waiting for the condition
+
+        This error is likely caused by:
+                - The kubelet is not running
+                - The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
+
+        If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
+                - 'systemctl status kubelet'
+                - 'journalctl -xeu kubelet'
+
+        Additionally, a control plane component may have crashed or exited when started by the container runtime.
+        To troubleshoot, list all containers using your preferred container runtimes CLI.
+
+        Here is one example how you may list all Kubernetes containers running in docker:
+                - 'docker ps -a | grep kube | grep -v pause'
+                Once you have found the failing container, you can inspect its logs with:
+                - 'docker logs CONTAINERID'
+
+
+stderr:
+        [WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+        [WARNING Service-Kubelet]: kubelet service is not enabled, please run 'systemctl enable kubelet.service'
+error execution phase wait-control-plane: couldn't initialize a Kubernetes cluster
+To see the stack trace of this error execute with --v=5 or higher
+
+💡  Suggestion: Check output of 'journalctl -xeu kubelet', try passing --extra-config=kubelet.cgroup-driver=systemd to minikube start
+🍿  Related issue: https://github.com/kubernetes/minikube/issues/4172
+
+[vagrant@localhost vagrant]$ minikube status
+E0303 14:51:00.773374   30996 status.go:413] kubeconfig endpoint: extract IP: "minikube" does not appear in /home/vagrant/.kube/config
+^C
+[vagrant@localhost vagrant]$ ls
+ configs                kubectl          minikube-linux-amd64   Tarefa.txt      Vagrantfile_do_Gabriel
+ jenkins-deploy.yaml    kubectl.sha256   problemas.txt         '#Vagrantfile'
+ jenkins-service.yaml   manifests        scripts                Vagrantfile
+[vagrant@localhost vagrant]$ ls -la
+total 116486
+drwxrwxrwx.  1 vagrant vagrant     4096 Mar  2 18:19  .
+dr-xr-xr-x. 18 root    root         239 Feb 25 22:15  ..
+drwxrwxrwx.  1 vagrant vagrant        0 Feb 22 20:39  configs
+-rwxrwxrwx.  1 vagrant vagrant      505 Mar  2 16:46  jenkins-deploy.yaml
+-rwxrwxrwx.  1 vagrant vagrant      182 Mar  3 13:42  jenkins-service.yaml
+-rwxrwxrwx.  1 vagrant vagrant 46592000 Feb 25 22:44  kubectl
+-rwxrwxrwx.  1 vagrant vagrant       64 Feb 25 22:44  kubectl.sha256
+drwxrwxrwx.  1 vagrant vagrant        0 Feb 25 22:00  manifests
+-rwxrwxrwx.  1 vagrant vagrant 72651748 Feb 25 22:45  minikube-linux-amd64
+-rwxrwxrwx.  1 vagrant vagrant      879 Mar  2 18:26  problemas.txt
+drwxrwxrwx.  1 vagrant vagrant     4096 Feb 25 22:27  scripts
+-rwxrwxrwx.  1 vagrant vagrant     1204 Feb 18 17:29  Tarefa.txt
+drwxrwxrwx.  1 vagrant vagrant        0 Feb 22 20:09  .vagrant
+-rwxrwxrwx.  1 vagrant vagrant     4847 Feb  8 18:43 '#Vagrantfile'
+-rwxrwxrwx.  1 vagrant vagrant     4885 Mar  2 19:20  Vagrantfile
+-rwxrwxrwx.  1 vagrant vagrant      330 Feb 22 20:31  Vagrantfile_do_Gabriel
+[vagrant@localhost vagrant]$
+[vagrant@localhost vagrant]$ ~
+-bash: /home/vagrant: Is a directory
+[vagrant@localhost vagrant]$ cd ~
+[vagrant@localhost ~]$ ls -la
+total 20
+drwx------.  5 vagrant vagrant  125 Feb 25 22:59 .
+drwxr-xr-x.  3 root    root      21 Feb  7 10:15 ..
+-rw-------.  1 vagrant vagrant 2158 Mar  3 13:08 .bash_history
+-rw-r--r--.  1 vagrant vagrant   18 Oct 10 01:59 .bash_logout
+-rw-r--r--.  1 vagrant vagrant  141 Oct 10 01:59 .bash_profile
+-rw-r--r--.  1 vagrant vagrant  376 Oct 10 01:59 .bashrc
+drwxr-xr-x.  3 vagrant vagrant   33 Mar  3 13:51 .kube
+drwxr-xr-x. 10 vagrant vagrant 4096 Mar  3 14:40 .minikube
+drwx------.  2 vagrant vagrant   29 Feb 25 22:15 .ssh
+[vagrant@localhost ~]$ cd .kube
+[vagrant@localhost .kube]$ ls
+cache  config
+[vagrant@localhost .kube]$ cd ~
+[vagrant@localhost ~]$ ls
+[vagrant@localhost ~]$ minikube delete --all
+🔥  Deleting "minikube" in docker ...
+🔥  Removing /home/vagrant/.minikube/machines/minikube ...
+💀  Removed all traces of the "minikube" cluster.
+🔥  Successfully deleted all profiles
+[vagrant@localhost ~]$ cd /vagrant/
+[vagrant@localhost vagrant]$ minikube delete --all
+🔥  Successfully deleted all profiles
+[vagrant@localhost vagrant]$ cd ~
+[vagrant@localhost ~]$ ls -la
+total 20
+drwx------.  5 vagrant vagrant  125 Feb 25 22:59 .
+drwxr-xr-x.  3 root    root      21 Feb  7 10:15 ..
+-rw-------.  1 vagrant vagrant 2158 Mar  3 13:08 .bash_history
+-rw-r--r--.  1 vagrant vagrant   18 Oct 10 01:59 .bash_logout
+-rw-r--r--.  1 vagrant vagrant  141 Oct 10 01:59 .bash_profile
+-rw-r--r--.  1 vagrant vagrant  376 Oct 10 01:59 .bashrc
+drwxr-xr-x.  3 vagrant vagrant   33 Mar  3 13:51 .kube
+drwxr-xr-x. 10 vagrant vagrant 4096 Mar  3 14:40 .minikube
+drwx------.  2 vagrant vagrant   29 Feb 25 22:15 .ssh
+[vagrant@localhost ~]$ minikube start
+😄  minikube v1.25.2 on Oracle 8.5 (vbox/amd64)
+✨  Automatically selected the docker driver. Other choices: none, ssh
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🔥  Creating docker container (CPUs=2, Memory=2200MB) ...
+🐳  Preparing Kubernetes v1.23.3 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+
+Message from syslogd@localhost at Mar  3 14:55:45 ...
+ kernel:watchdog: BUG: soft lockup - CPU#1 stuck for 84s! [containerd:691]
+
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...\
+Message from syslogd@localhost at Mar  3 14:58:06 ...
+ kernel:watchdog: BUG: soft lockup - CPU#1 stuck for 75s! [etcd:33925]
+
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+❌  Problems detected in kubelet:
+    Mar 03 15:00:56 minikube kubelet[1843]: W0303 15:00:56.956074    1843 reflector.go:324] object-"kube-system"/"kube-proxy": failed to list *v1.ConfigMap: configmaps "kube-proxy" is forbidden: User "system:node:minikube" cannot list resource "configmaps" in API group "" in the namespace "kube-system": no relationship found between node 'minikube' and this object
+    Mar 03 15:00:56 minikube kubelet[1843]: E0303 15:00:56.958853    1843 reflector.go:138] object-"kube-system"/"kube-proxy": Failed to watch *v1.ConfigMap: failed to list *v1.ConfigMap: configmaps "kube-proxy" is forbidden: User "system:node:minikube" cannot list resource "configmaps" in API group "" in the namespace "kube-system": no relationship found between node 'minikube' and this object
+❌  Problems detected in kubelet:
+    Mar 03 15:00:56 minikube kubelet[1843]: W0303 15:00:56.956074    1843 reflector.go:324] object-"kube-system"/"kube-proxy": failed to list *v1.ConfigMap: configmaps "kube-proxy" is forbidden: User "system:node:minikube" cannot list resource "configmaps" in API group "" in the namespace "kube-system": no relationship found between node 'minikube' and this object
+    Mar 03 15:00:56 minikube kubelet[1843]: E0303 15:00:56.958853    1843 reflector.go:138] object-"kube-system"/"kube-proxy": Failed to watch *v1.ConfigMap: failed to list *v1.ConfigMap: configmaps "kube-proxy" is forbidden: User "system:node:minikube" cannot list resource "configmaps" in API group "" in the namespace "kube-system": no relationship found between node 'minikube' and this object
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+[vagrant@localhost ~]$
+[vagrant@localhost ~]$ kubectl get pods
+No resources found in default namespace.
+[vagrant@localhost ~]$ kubectl get namespace
+NAME              STATUS   AGE
+default           Active   6m9s
+kube-node-lease   Active   6m14s
+kube-public       Active   6m14s
+kube-system       Active   6m14s
+[vagrant@localhost ~]$ kubectl create namespace jenkins
+namespace/jenkins created
+[vagrant@localhost ~]$ ls
+[vagrant@localhost ~]$ cd /vagrant/
+[vagrant@localhost vagrant]$ ls
+ configs                kubectl          minikube-linux-amd64   Tarefa.txt      Vagrantfile_do_Gabriel
+ jenkins-deploy.yaml    kubectl.sha256   problemas.txt         '#Vagrantfile'
+ jenkins-service.yaml   manifests        scripts                Vagrantfile
+[vagrant@localhost vagrant]$ kubectl create jenkins-deploy.yaml -n jenkins
+Error: must specify one of -f and -k
+
+error: unknown command "jenkins-deploy.yaml"
+See 'kubectl create -h' for help and examples
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-deploy.yaml -n jenkins
+deployment.apps/jenkins created
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-service.yaml -n jenkins
+service/jenkins created
+[vagrant@localhost vagrant]$ minikube ip
+192.168.49.2
+[vagrant@localhost vagrant]$ kubectl get svc -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl get svc -n jenkins
+NAME      TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+jenkins   NodePort   10.111.214.139   <none>        8080:30010/TCP   72s
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ kubectl apply -f jenkins-service.yaml -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl apply -f jenkins-service.yaml -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl apply -f jenkins-service.yaml -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl apply -f jenkins-service.yaml -n jenkins
+Warning: resource services/jenkins is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+service/jenkins configured
+[vagrant@localhost vagrant]$ kubectl get svc -n jenkins
+NAME      TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+jenkins   NodePort   10.111.214.139   <none>        8080:30000/TCP   6m7s
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30010
+curl: (7) Failed to connect to 192.168.49.2 port 30010: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ kubectl get nodes -o wide
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl get nodes -o wide
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl get nodes -o wide
+NAME       STATUS     ROLES                  AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                      CONTAINER-RUNTIME
+minikube   NotReady   control-plane,master   15m   v1.23.3   192.168.49.2   <none>        Ubuntu 20.04.2 LTS   5.4.17-2136.304.4.1.el8uek.x86_64   docker://20.10.12
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ curl 192.168.49.2:30000
+curl: (7) Failed to connect to 192.168.49.2 port 30000: Connection refused
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+NAME                       READY   STATUS             RESTARTS   AGE
+jenkins-789c9b6b84-pdds7   0/1     ImagePullBackOff   0          8m57s
+[vagrant@localhost vagrant]$ kubectl create -f jenkins-deploy.yaml -n jenkins
+Error from server (AlreadyExists): error when creating "jenkins-deploy.yaml": deployments.apps "jenkins" already exists
+[vagrant@localhost vagrant]$ kubectl apply -f jenkins-deploy.yaml -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl apply -f jenkins-deploy.yaml -n jenkins
+Warning: resource deployments/jenkins is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+deployment.apps/jenkins configured
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+Unable to connect to the server: net/http: TLS handshake timeout
+[vagrant@localhost vagrant]$ kubectl get pods -n jenkins
+^C
+[vagrant@localhost vagrant]$
+[vagrant@localhost vagrant]$
+[vagrant@localhost vagrant]$
+[vagrant@localhost vagrant]$
+[vagrant@localhost vagrant]$ minikube stop
+✋  Stopping node "minikube"  ...
+🛑  Powering off "minikube" via SSH ...
+🛑  1 node stopped.
+[vagrant@localhost vagrant]$ eixt
+-bash: eixt: command not found
+[vagrant@localhost vagrant]$ exit
+logout
+Connection to 127.0.0.1 closed.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant reload
+==> default: Attempting graceful shutdown of VM...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 9000 (guest) => 9000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+The guest machine entered an invalid state while waiting for it
+to boot. Valid states are 'starting, running'. The machine is in the
+'unknown' state. Please verify everything is configured
+properly and try again.
+
+If the provider you're using has a GUI that comes with it,
+it is often helpful to open that and watch the machine, since the
+GUI often has more helpful error messages than Vagrant can retrieve.
+For example, if you're using VirtualBox, run `vagrant up` while the
+VirtualBox GUI is open.
+
+The primary issue for this error is that the provider you're using
+is not properly configured. This is very rarely a Vagrant issue.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant reload
+==> default: Attempting graceful shutdown of VM...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 9000 (guest) => 9000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+==> default: Machine booted and ready!
+GuestAdditions are newer than your host but, downgrades are disabled. Skipping.
+==> default: Checking for guest additions in VM...
+==> default: Configuring and enabling network interfaces...
+==> default: Mounting shared folders...
+    default: /vagrant => C:/Erico/COMPASS/Trabalho_Final
+==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> default: flag to force provisioning. Provisioners marked to run always will still run.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant ssh
+
+Welcome to Oracle Linux Server release 8.5 (GNU/Linux 5.4.17-2136.302.7.2.2.el8uek.x86_64)
+
+The Oracle Linux End-User License Agreement can be viewed here:
+
+  * /usr/share/eula/eula.en_US
+
+For additional packages, updates, documentation and community help, see:
+
+  * https://yum.oracle.com/
+
+Last login: Thu Mar  3 13:13:38 2022 from 10.0.2.2
+[vagrant@localhost ~]$ minikube start
+😄  minikube v1.25.2 on Oracle 8.5 (vbox/amd64)
+✨  Using the docker driver based on existing profile
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🔄  Restarting existing docker container for "minikube" ...
+🐳  Preparing Kubernetes v1.23.3 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+🤦  Unable to restart cluster, will reset it: apiserver health: apiserver healthz never reported healthy: cluster wait timed out during healthz check
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+💢  initialization failed, will try again: wait: /bin/bash -c "sudo env PATH="/var/lib/minikube/binaries/v1.23.3:$PATH" kubeadm init --config /var/tmp/minikube/kubeadm.yaml  --ignore-preflight-errors=DirAvailable--etc-kubernetes-manifests,DirAvailable--var-lib-minikube,DirAvailable--var-lib-minikube-etcd,FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml,FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml,FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml,FileAvailable--etc-kubernetes-manifests-etcd.yaml,Port-10250,Swap,Mem,SystemVerification,FileContent--proc-sys-net-bridge-bridge-nf-call-iptables": Process exited with status 1
+stdout:
+[init] Using Kubernetes version: v1.23.3
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[certs] Using certificateDir folder "/var/lib/minikube/certs"
+[certs] Using existing ca certificate authority
+[certs] Using existing apiserver certificate and key on disk
+[certs] Using existing apiserver-kubelet-client certificate and key on disk
+[certs] Using existing front-proxy-ca certificate authority
+[certs] Using existing front-proxy-client certificate and key on disk
+[certs] Using existing etcd/ca certificate authority
+[certs] Using existing etcd/server certificate and key on disk
+[certs] Using existing etcd/peer certificate and key on disk
+[certs] Using existing etcd/healthcheck-client certificate and key on disk
+[certs] Using existing apiserver-etcd-client certificate and key on disk
+[certs] Using the existing "sa" key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Starting the kubelet
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[kubelet-check] Initial timeout of 40s passed.
+
+        Unfortunately, an error has occurred:
+                timed out waiting for the condition
+
+        This error is likely caused by:
+                - The kubelet is not running
+                - The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
+
+        If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
+                - 'systemctl status kubelet'
+                - 'journalctl -xeu kubelet'
+
+        Additionally, a control plane component may have crashed or exited when started by the container runtime.
+        To troubleshoot, list all containers using your preferred container runtimes CLI.
+
+        Here is one example how you may list all Kubernetes containers running in docker:
+                - 'docker ps -a | grep kube | grep -v pause'
+                Once you have found the failing container, you can inspect its logs with:
+                - 'docker logs CONTAINERID'
+
+
+stderr:
+        [WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+        [WARNING Service-Kubelet]: kubelet service is not enabled, please run 'systemctl enable kubelet.service'
+error execution phase wait-control-plane: couldn't initialize a Kubernetes cluster
+To see the stack trace of this error execute with --v=5 or higher
+
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...\
+\
+\ |
+[vagrant@localhost ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant destroy
+    default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==> default: Forcing shutdown of VM...
+==> default: Destroying VM and associated drives...
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'oraclelinux/8'...
+==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Setting the name of the VM: compasso
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 9000 (guest) => 9000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Disk cannot be decreased in size. 30720 MB requested but disk is already 37888 MB.
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Machine booted and ready!
+[default] GuestAdditions seems to be installed (6.1.32) correctly, but not running.
+Redirecting to /bin/systemctl start vboxadd.service
+Redirecting to /bin/systemctl start vboxadd-service.service
+VirtualBox Guest Additions: Starting.
+VirtualBox Guest Additions: Building the VirtualBox Guest Additions kernel
+modules.  This may take a while.
+VirtualBox Guest Additions: To build modules for other installed kernels, run
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup <version>
+VirtualBox Guest Additions: or
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup all
+VirtualBox Guest Additions: Building the modules for kernel
+5.4.17-2136.302.7.2.2.el8uek.x86_64.
+VirtualBox Guest Additions: Running kernel modules will not be replaced until
+the system is restarted
+Restarting VM to apply changes...
+==> default: Attempting graceful shutdown of VM...
+==> default: Disk cannot be decreased in size. 30720 MB requested but disk is already 37888 MB.
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+==> default: Checking for guest additions in VM...
+The guest machine entered an invalid state while waiting for it
+to boot. Valid states are 'starting, running'. The machine is in the
+'unknown' state. Please verify everything is configured
+properly and try again.
+
+If the provider you're using has a GUI that comes with it,
+it is often helpful to open that and watch the machine, since the
+GUI often has more helpful error messages than Vagrant can retrieve.
+For example, if you're using VirtualBox, run `vagrant up` while the
+VirtualBox GUI is open.
+
+The primary issue for this error is that the provider you're using
+is not properly configured. This is very rarely a Vagrant issue.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant reload
+==> default: Attempting graceful shutdown of VM...
+==> default: Checking if box 'oraclelinux/8' version '8.5.320' is up to date...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: bridged
+==> default: You are trying to forward to privileged ports (ports <= 1024). Most
+==> default: operating systems restrict this to only privileged process (typically
+==> default: processes running as an administrative user). This is a warning in case
+==> default: the port forwarding doesn't work. If any problems occur, please try a
+==> default: port higher than 1024.
+==> default: Forwarding ports...
+    default: 81 (guest) => 81 (host) (adapter 1)
+    default: 80 (guest) => 80 (host) (adapter 1)
+    default: 3306 (guest) => 3306 (host) (adapter 1)
+    default: 8080 (guest) => 8080 (host) (adapter 1)
+    default: 9000 (guest) => 9000 (host) (adapter 1)
+    default: 19999 (guest) => 19999 (host) (adapter 1)
+    default: 9001 (guest) => 9001 (host) (adapter 1)
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+==> default: Machine booted and ready!
+[default] GuestAdditions seems to be installed (6.1.32) correctly, but not running.
+Redirecting to /bin/systemctl start vboxadd.service
+Redirecting to /bin/systemctl start vboxadd-service.service
+VirtualBox Guest Additions: Starting.
+VirtualBox Guest Additions: Building the VirtualBox Guest Additions kernel
+modules.  This may take a while.
+VirtualBox Guest Additions: To build modules for other installed kernels, run
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup <version>
+VirtualBox Guest Additions: or
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup all
+VirtualBox Guest Additions: Building the modules for kernel
+5.4.17-2136.302.7.2.2.el8uek.x86_64.
+VirtualBox Guest Additions: Running kernel modules will not be replaced until
+the system is restarted
+Restarting VM to apply changes...
+==> default: Attempting graceful shutdown of VM...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+==> default: Configuring and enabling network interfaces...
+==> default: Mounting shared folders...
+    default: /vagrant => C:/Erico/COMPASS/Trabalho_Final
+==> default: Running provisioner: shell...
+    default: Running: inline script
+==> default: Running provisioner: shell...
+    default: Running: inline script
+    default: Iniciando a instalação do docker.
+    default: Realizando update.
+    default: Oracle Linux 8 BaseOS Latest (x86_64)           6.7 MB/s |  42 MB     00:06
+    default: Oracle Linux 8 Application Stream (x86_64)      8.4 MB/s |  32 MB     00:03
+    default: Latest Unbreakable Enterprise Kernel Release 6  4.9 MB/s |  36 MB     00:07
+    default: Last metadata expiration check: 0:00:28 ago on Thu 03 Mar 2022 04:09:54 PM UTC.
+    default: Dependencies resolved.
+    default: ============================================================================================
+    default:  Package               Arch    Version                              Repository          Size
+    default: ============================================================================================
+    default: Installing:
+    default:  kernel-uek            x86_64  5.4.17-2136.304.4.2.el8uek           ol8_UEKR6           67 M
+    default:  kernel-uek-devel      x86_64  5.4.17-2136.304.4.2.el8uek           ol8_UEKR6           18 M
+    default: Upgrading:
+    default:  cyrus-sasl-lib        x86_64  2.1.27-6.el8_5                       ol8_baseos_latest  123 k
+    default:  dracut                x86_64  049-191.git20210920.0.2.el8          ol8_baseos_latest  377 k
+    default:  dracut-network        x86_64  049-191.git20210920.0.2.el8          ol8_baseos_latest  111 k
+    default:  dracut-squash         x86_64  049-191.git20210920.0.2.el8          ol8_baseos_latest   63 k
+    default:  glibc                 x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  3.6 M
+    default:  glibc-common          x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  1.3 M
+    default:  glibc-devel           x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  1.0 M
+    default:  glibc-headers         x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  481 k
+    default:  glibc-langpack-en     x86_64  2.28-164.0.4.el8                     ol8_baseos_latest  829 k
+    default:  linux-firmware        noarch  999:20211203-999.9.1.gitb0e898fb.el8 ol8_baseos_latest  206 M
+    default:  oraclelinux-release   x86_64  8:8.5-1.0.8.el8                      ol8_baseos_latest   78 k
+    default:  redhat-release        x86_64  2:8.5-0.8.0.2.el8                    ol8_baseos_latest   19 k
+    default:
+    default: Transaction Summary
+    default: ============================================================================================
+    default: Install   2 Packages
+    default: Upgrade  12 Packages
+    default:
+    default: Total download size: 299 M
+    default: Downloading Packages:
+    default: (1/14): cyrus-sasl-lib-2.1.27-6.el8_5.x86_64.rp 563 kB/s | 123 kB     00:00
+    default: (2/14): dracut-049-191.git20210920.0.2.el8.x86_ 1.7 MB/s | 377 kB     00:00
+    default: (3/14): dracut-network-049-191.git20210920.0.2. 1.7 MB/s | 111 kB     00:00
+    default: (4/14): dracut-squash-049-191.git20210920.0.2.e 1.6 MB/s |  63 kB     00:00
+    default: (5/14): glibc-2.28-164.0.4.el8.x86_64.rpm       2.7 MB/s | 3.6 MB     00:01
+    default: (6/14): glibc-common-2.28-164.0.4.el8.x86_64.rp 2.1 MB/s | 1.3 MB     00:00
+    default: (7/14): glibc-devel-2.28-164.0.4.el8.x86_64.rpm 2.4 MB/s | 1.0 MB     00:00
+    default: (8/14): glibc-headers-2.28-164.0.4.el8.x86_64.r 1.9 MB/s | 481 kB     00:00
+    default: (9/14): glibc-langpack-en-2.28-164.0.4.el8.x86_ 2.3 MB/s | 829 kB     00:00
+    default: (10/14): kernel-uek-devel-5.4.17-2136.304.4.2.e 2.3 MB/s |  18 MB     00:08
+    default: (11/14): oraclelinux-release-8.5-1.0.8.el8.x86_ 1.6 MB/s |  78 kB     00:00
+    default: (12/14): redhat-release-8.5-0.8.0.2.el8.x86_64. 679 kB/s |  19 kB     00:00
+    default: (13/14): kernel-uek-5.4.17-2136.304.4.2.el8uek. 2.9 MB/s |  67 MB     00:23
+    default: (14/14): linux-firmware-20211203-999.9.1.gitb0e 4.1 MB/s | 206 MB     00:49
+    default: --------------------------------------------------------------------------------
+    default: Total                                           5.6 MB/s | 299 MB     00:53
+    default: Running transaction check
+    default: Transaction check succeeded.
+    default: Running transaction test
+    default: Transaction test succeeded.
+    default: Running transaction
+    default:   Preparing        :                                                        1/1
+    default:   Running scriptlet: glibc-common-2.28-164.0.4.el8.x86_64                   1/1
+    default:   Upgrading        : glibc-common-2.28-164.0.4.el8.x86_64                  1/26
+    default:   Upgrading        : glibc-langpack-en-2.28-164.0.4.el8.x86_64             2/26
+    default:   Running scriptlet: glibc-2.28-164.0.4.el8.x86_64                         3/26
+    default:   Upgrading        : glibc-2.28-164.0.4.el8.x86_64                         3/26
+    default:   Running scriptlet: glibc-2.28-164.0.4.el8.x86_64                         3/26
+    default:   Upgrading        : dracut-049-191.git20210920.0.2.el8.x86_64             4/26
+    default:   Running scriptlet: glibc-headers-2.28-164.0.4.el8.x86_64                 5/26
+    default:   Upgrading        : glibc-headers-2.28-164.0.4.el8.x86_64                 5/26
+    default:   Upgrading        : redhat-release-2:8.5-0.8.0.2.el8.x86_64               6/26
+    default:   Upgrading        : oraclelinux-release-8:8.5-1.0.8.el8.x86_64            7/26
+    default:   Upgrading        : linux-firmware-999:20211203-999.9.1.gitb0e898fb.el    8/26
+    default:   Running scriptlet: kernel-uek-5.4.17-2136.304.4.2.el8uek.x86_64          9/26
+    default:   Installing       : kernel-uek-5.4.17-2136.304.4.2.el8uek.x86_64          9/26
+    default:   Running scriptlet: kernel-uek-5.4.17-2136.304.4.2.el8uek.x86_64          9/26
+    default:   Upgrading        : glibc-devel-2.28-164.0.4.el8.x86_64                  10/26
+    default:   Running scriptlet: glibc-devel-2.28-164.0.4.el8.x86_64                  10/26
+    default:   Upgrading        : dracut-network-049-191.git20210920.0.2.el8.x86_64    11/26
+    default:   Upgrading        : dracut-squash-049-191.git20210920.0.2.el8.x86_64     12/26
+    default:   Upgrading        : cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                 13/26
+    default:   Running scriptlet: cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                 13/26
+    default:   Installing       : kernel-uek-devel-5.4.17-2136.304.4.2.el8uek.x86_64   14/26
+    default:   Running scriptlet: kernel-uek-devel-5.4.17-2136.304.4.2.el8uek.x86_64   14/26
+    default:   Cleanup          : cyrus-sasl-lib-2.1.27-5.el8.x86_64                   15/26
+    default:   Running scriptlet: cyrus-sasl-lib-2.1.27-5.el8.x86_64                   15/26
+    default:   Running scriptlet: glibc-devel-2.28-164.0.3.el8.x86_64                  16/26
+    default:   Cleanup          : glibc-devel-2.28-164.0.3.el8.x86_64                  16/26
+    default:   Cleanup          : glibc-headers-2.28-164.0.3.el8.x86_64                17/26
+    default:   Cleanup          : oraclelinux-release-8:8.5-1.0.7.el8.x86_64           18/26
+    default:   Cleanup          : dracut-squash-049-191.git20210920.0.1.el8.x86_64     19/26
+    default:   Cleanup          : dracut-network-049-191.git20210920.0.1.el8.x86_64    20/26
+    default:   Cleanup          : redhat-release-2:8.5-0.8.0.1.el8.x86_64              21/26
+    default:   Cleanup          : linux-firmware-999:20210617-999.8.git0f66b74b.el8.   22/26
+    default:   Cleanup          : dracut-049-191.git20210920.0.1.el8.x86_64            23/26
+    default:   Cleanup          : glibc-2.28-164.0.3.el8.x86_64                        24/26
+    default:   Cleanup          : glibc-langpack-en-2.28-164.0.3.el8.x86_64            25/26
+    default:   Cleanup          : glibc-common-2.28-164.0.3.el8.x86_64                 26/26
+    default:   Running scriptlet: kernel-uek-5.4.17-2136.304.4.2.el8uek.x86_64         26/26
+    default:   Running scriptlet: glibc-common-2.28-164.0.3.el8.x86_64                 26/26
+    default:   Running scriptlet: glibc-common-2.28-164.0.4.el8.x86_64                 26/26
+    default:   Verifying        : kernel-uek-5.4.17-2136.304.4.2.el8uek.x86_64          1/26
+    default:   Verifying        : kernel-uek-devel-5.4.17-2136.304.4.2.el8uek.x86_64    2/26
+    default:   Verifying        : cyrus-sasl-lib-2.1.27-6.el8_5.x86_64                  3/26
+    default:   Verifying        : cyrus-sasl-lib-2.1.27-5.el8.x86_64                    4/26
+    default:   Verifying        : dracut-049-191.git20210920.0.2.el8.x86_64             5/26
+    default:   Verifying        : dracut-049-191.git20210920.0.1.el8.x86_64             6/26
+    default:   Verifying        : dracut-network-049-191.git20210920.0.2.el8.x86_64     7/26
+    default:   Verifying        : dracut-network-049-191.git20210920.0.1.el8.x86_64     8/26
+    default:   Verifying        : dracut-squash-049-191.git20210920.0.2.el8.x86_64      9/26
+    default:   Verifying        : dracut-squash-049-191.git20210920.0.1.el8.x86_64     10/26
+    default:   Verifying        : glibc-2.28-164.0.4.el8.x86_64                        11/26
+    default:   Verifying        : glibc-2.28-164.0.3.el8.x86_64                        12/26
+    default:   Verifying        : glibc-common-2.28-164.0.4.el8.x86_64                 13/26
+    default:   Verifying        : glibc-common-2.28-164.0.3.el8.x86_64                 14/26
+    default:   Verifying        : glibc-devel-2.28-164.0.4.el8.x86_64                  15/26
+    default:   Verifying        : glibc-devel-2.28-164.0.3.el8.x86_64                  16/26
+    default:   Verifying        : glibc-headers-2.28-164.0.4.el8.x86_64                17/26
+    default:   Verifying        : glibc-headers-2.28-164.0.3.el8.x86_64                18/26
+    default:   Verifying        : glibc-langpack-en-2.28-164.0.4.el8.x86_64            19/26
+    default:   Verifying        : glibc-langpack-en-2.28-164.0.3.el8.x86_64            20/26
+    default:   Verifying        : linux-firmware-999:20211203-999.9.1.gitb0e898fb.el   21/26
+    default:   Verifying        : linux-firmware-999:20210617-999.8.git0f66b74b.el8.   22/26
+    default:   Verifying        : oraclelinux-release-8:8.5-1.0.8.el8.x86_64           23/26
+    default:   Verifying        : oraclelinux-release-8:8.5-1.0.7.el8.x86_64           24/26
+    default:   Verifying        : redhat-release-2:8.5-0.8.0.2.el8.x86_64              25/26
+    default:   Verifying        : redhat-release-2:8.5-0.8.0.1.el8.x86_64              26/26
+    default:
+    default: Upgraded:
+    default:   cyrus-sasl-lib-2.1.27-6.el8_5.x86_64
+    default:   dracut-049-191.git20210920.0.2.el8.x86_64
+    default:   dracut-network-049-191.git20210920.0.2.el8.x86_64
+    default:   dracut-squash-049-191.git20210920.0.2.el8.x86_64
+    default:   glibc-2.28-164.0.4.el8.x86_64
+    default:   glibc-common-2.28-164.0.4.el8.x86_64
+    default:   glibc-devel-2.28-164.0.4.el8.x86_64
+    default:   glibc-headers-2.28-164.0.4.el8.x86_64
+    default:   glibc-langpack-en-2.28-164.0.4.el8.x86_64
+    default:   linux-firmware-999:20211203-999.9.1.gitb0e898fb.el8.noarch
+    default:   oraclelinux-release-8:8.5-1.0.8.el8.x86_64
+    default:   redhat-release-2:8.5-0.8.0.2.el8.x86_64
+    default: Installed:
+    default:   kernel-uek-5.4.17-2136.304.4.2.el8uek.x86_64
+    default:   kernel-uek-devel-5.4.17-2136.304.4.2.el8uek.x86_64
+    default:
+    default: Complete!
+    default: Instalando yum-utils.
+    default: Last metadata expiration check: 0:09:10 ago on Thu 03 Mar 2022 04:09:54 PM UTC.
+    default: Dependencies resolved.
+    default: ================================================================================
+    default:  Package       Arch       Version                   Repository             Size
+    default: ================================================================================
+    default: Installing:
+    default:  yum-utils     noarch     4.0.21-4.0.1.el8_5        ol8_baseos_latest      73 k
+    default:
+    default: Transaction Summary
+    default: ================================================================================
+    default: Install  1 Package
+    default:
+    default: Total download size: 73 k
+    default: Installed size: 23 k
+    default: Downloading Packages:
+    default: yum-utils-4.0.21-4.0.1.el8_5.noarch.rpm         381 kB/s |  73 kB     00:00
+    default: --------------------------------------------------------------------------------
+    default: Total                                           356 kB/s |  73 kB     00:00
+    default: Running transaction check
+    default: Transaction check succeeded.
+    default: Running transaction test
+    default: Transaction test succeeded.
+    default: Running transaction
+    default:   Preparing        :                                                        1/1
+    default:   Installing       : yum-utils-4.0.21-4.0.1.el8_5.noarch                    1/1
+    default:   Running scriptlet: yum-utils-4.0.21-4.0.1.el8_5.noarch                    1/1
+    default:   Verifying        : yum-utils-4.0.21-4.0.1.el8_5.noarch                    1/1
+    default:
+    default: Installed:
+    default:   yum-utils-4.0.21-4.0.1.el8_5.noarch
+    default:
+    default: Complete!
+    default: Inserindo caminho para repositório do docker.
+    default: Adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+    default: Docker CE Stable - x86_64                        56 kB/s |  19 kB     00:00
+    default: Dependencies resolved.
+    default: Nothing to do.
+    default: Complete!
+    default: Instalando o docker.
+    default: Last metadata expiration check: 0:00:08 ago on Thu 03 Mar 2022 04:19:16 PM UTC.
+    default: Dependencies resolved.
+    default: ==========================================================================================================
+    default:  Package                        Arch    Version                                   Repository          Size
+    default: ==========================================================================================================
+    default: Installing:
+    default:  containerd.io                  x86_64  1.4.12-3.1.el8                            docker-ce-stable    28 M
+    default:  docker-ce                      x86_64  3:20.10.12-3.el8                          docker-ce-stable    22 M
+    default:  docker-ce-cli                  x86_64  1:20.10.12-3.el8                          docker-ce-stable    30 M
+    default: Installing dependencies:
+    default:  checkpolicy                    x86_64  2.9-1.el8                                 ol8_baseos_latest  346 k
+    default:  container-selinux              noarch  2:2.173.0-1.module+el8.5.0+20494+0311868c ol8_appstream       57 k
+    default:  docker-ce-rootless-extras      x86_64  20.10.12-3.el8                            docker-ce-stable   4.6 M
+    default:  docker-scan-plugin             x86_64  0.12.0-3.el8                              docker-ce-stable   3.7 M
+    default:  fuse-common                    x86_64  3.2.1-12.0.3.el8                          ol8_baseos_latest   22 k
+    default:  fuse-overlayfs                 x86_64  1.8-1.module+el8.5.0+20494+0311868c       ol8_appstream       73 k
+    default:  fuse3                          x86_64  3.2.1-12.0.3.el8                          ol8_baseos_latest   51 k
+    default:  fuse3-libs                     x86_64  3.2.1-12.0.3.el8                          ol8_baseos_latest   95 k
+    default:  libcgroup                      x86_64  0.41-19.el8                               ol8_baseos_latest   70 k
+    default:  libslirp                       x86_64  4.4.0-1.module+el8.5.0+20416+d687fed7     ol8_appstream       70 k
+    default:  policycoreutils-python-utils   noarch  2.9-16.0.1.el8                            ol8_baseos_latest  252 k
+    default:  python3-audit                  x86_64  3.0-0.17.20191104git1c2f876.el8           ol8_baseos_latest   86 k
+    default:  python3-libsemanage            x86_64  2.9-6.el8                                 ol8_baseos_latest  127 k
+    default:  python3-policycoreutils        noarch  2.9-16.0.1.el8                            ol8_baseos_latest  2.2 M
+    default:  python3-setools                x86_64  4.3.0-2.el8                               ol8_baseos_latest  626 k
+    default:  slirp4netns                    x86_64  1.1.8-1.module+el8.5.0+20416+d687fed7     ol8_appstream       51 k
+    default: Enabling module streams:
+    default:  container-tools                        ol8
+    default:
+    default: Transaction Summary
+    default: ==========================================================================================================
+    default: Install  19 Packages
+    default:
+    default: Total download size: 93 M
+    default: Installed size: 388 M
+    default: Downloading Packages:
+    default: (1/19): docker-ce-20.10.12-3.el8.x86_64.rpm     3.3 MB/s |  22 MB     00:06
+    default: (2/19): docker-ce-rootless-extras-20.10.12-3.el 3.4 MB/s | 4.6 MB     00:01
+    default: (3/19): containerd.io-1.4.12-3.1.el8.x86_64.rpm 3.2 MB/s |  28 MB     00:08
+    default: (4/19): checkpolicy-2.9-1.el8.x86_64.rpm        1.8 MB/s | 346 kB     00:00
+    default: (5/19): fuse-common-3.2.1-12.0.3.el8.x86_64.rpm 933 kB/s |  22 kB     00:00
+    default: (6/19): fuse3-3.2.1-12.0.3.el8.x86_64.rpm       1.3 MB/s |  51 kB     00:00
+    default: (7/19): fuse3-libs-3.2.1-12.0.3.el8.x86_64.rpm  1.8 MB/s |  95 kB     00:00
+    default: (8/19): libcgroup-0.41-19.el8.x86_64.rpm        1.6 MB/s |  70 kB     00:00
+    default: (9/19): policycoreutils-python-utils-2.9-16.0.1 3.5 MB/s | 252 kB     00:00
+    default: (10/19): python3-audit-3.0-0.17.20191104git1c2f 2.2 MB/s |  86 kB     00:00
+    default: (11/19): python3-libsemanage-2.9-6.el8.x86_64.r 2.8 MB/s | 127 kB     00:00
+    default: (12/19): docker-ce-cli-20.10.12-3.el8.x86_64.rp 3.0 MB/s |  30 MB     00:10
+    default: (13/19): docker-scan-plugin-0.12.0-3.el8.x86_64 1.8 MB/s | 3.7 MB     00:02
+    default: (14/19): container-selinux-2.173.0-1.module+el8 499 kB/s |  57 kB     00:00
+    default: (15/19): fuse-overlayfs-1.8-1.module+el8.5.0+20 1.4 MB/s |  73 kB     00:00
+    default: (16/19): libslirp-4.4.0-1.module+el8.5.0+20416+ 1.8 MB/s |  70 kB     00:00
+    default: (17/19): python3-setools-4.3.0-2.el8.x86_64.rpm 1.6 MB/s | 626 kB     00:00
+    default: (18/19): slirp4netns-1.1.8-1.module+el8.5.0+204 908 kB/s |  51 kB     00:00
+    default: (19/19): python3-policycoreutils-2.9-16.0.1.el8 1.9 MB/s | 2.2 MB     00:01
+    default: --------------------------------------------------------------------------------
+    default: Total                                           8.8 MB/s |  93 MB     00:10
+    default: Docker CE Stable - x86_64                        21 kB/s | 1.6 kB     00:00
+    default: Importing GPG key 0x621E9F35:
+    default:  Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+    default:  Fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+    default:  From       : https://download.docker.com/linux/centos/gpg
+    default: Key imported successfully
+    default: Running transaction check
+    default: Transaction check succeeded.
+    default: Running transaction test
+    default: Transaction test succeeded.
+    default: Running transaction
+    default:   Preparing        :                                                        1/1
+    default:   Installing       : docker-scan-plugin-0.12.0-3.el8.x86_64                1/19
+    default:   Running scriptlet: docker-scan-plugin-0.12.0-3.el8.x86_64                1/19
+    default:   Installing       : docker-ce-cli-1:20.10.12-3.el8.x86_64                 2/19
+    default:   Running scriptlet: docker-ce-cli-1:20.10.12-3.el8.x86_64                 2/19
+    default:   Installing       : libslirp-4.4.0-1.module+el8.5.0+20416+d687fed7.x86    3/19
+    default:   Installing       : slirp4netns-1.1.8-1.module+el8.5.0+20416+d687fed7.    4/19
+    default:   Installing       : python3-setools-4.3.0-2.el8.x86_64                    5/19
+    default:   Installing       : python3-libsemanage-2.9-6.el8.x86_64                  6/19
+    default:   Installing       : python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_    7/19
+    default:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          8/19
+    default:   Installing       : libcgroup-0.41-19.el8.x86_64                          8/19
+    default:   Running scriptlet: libcgroup-0.41-19.el8.x86_64                          8/19
+    default:   Installing       : fuse3-libs-3.2.1-12.0.3.el8.x86_64                    9/19
+    default:   Running scriptlet: fuse3-libs-3.2.1-12.0.3.el8.x86_64                    9/19
+    default:   Installing       : fuse-common-3.2.1-12.0.3.el8.x86_64                  10/19
+    default:   Installing       : fuse3-3.2.1-12.0.3.el8.x86_64                        11/19
+    default:   Installing       : fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c   12/19
+    default:   Running scriptlet: fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c   12/19
+    default:   Installing       : checkpolicy-2.9-1.el8.x86_64                         13/19
+    default:   Installing       : python3-policycoreutils-2.9-16.0.1.el8.noarch        14/19
+    default:   Installing       : policycoreutils-python-utils-2.9-16.0.1.el8.noarch   15/19
+    default:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Installing       : container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Installing       : containerd.io-1.4.12-3.1.el8.x86_64                  17/19
+    default:   Running scriptlet: containerd.io-1.4.12-3.1.el8.x86_64                  17/19
+    default:   Installing       : docker-ce-rootless-extras-20.10.12-3.el8.x86_64      18/19
+    default:   Running scriptlet: docker-ce-rootless-extras-20.10.12-3.el8.x86_64      18/19
+    default:   Installing       : docker-ce-3:20.10.12-3.el8.x86_64                    19/19
+    default:   Running scriptlet: docker-ce-3:20.10.12-3.el8.x86_64                    19/19
+    default:   Running scriptlet: container-selinux-2:2.173.0-1.module+el8.5.0+20494   19/19
+    default:   Running scriptlet: docker-ce-3:20.10.12-3.el8.x86_64                    19/19
+    default:   Verifying        : containerd.io-1.4.12-3.1.el8.x86_64                   1/19
+    default:   Verifying        : docker-ce-3:20.10.12-3.el8.x86_64                     2/19
+    default:   Verifying        : docker-ce-cli-1:20.10.12-3.el8.x86_64                 3/19
+    default:   Verifying        : docker-ce-rootless-extras-20.10.12-3.el8.x86_64       4/19
+    default:   Verifying        : docker-scan-plugin-0.12.0-3.el8.x86_64                5/19
+    default:   Verifying        : checkpolicy-2.9-1.el8.x86_64                          6/19
+    default:   Verifying        : fuse-common-3.2.1-12.0.3.el8.x86_64                   7/19
+    default:   Verifying        : fuse3-3.2.1-12.0.3.el8.x86_64                         8/19
+    default:   Verifying        : fuse3-libs-3.2.1-12.0.3.el8.x86_64                    9/19
+    default:   Verifying        : libcgroup-0.41-19.el8.x86_64                         10/19
+    default:   Verifying        : policycoreutils-python-utils-2.9-16.0.1.el8.noarch   11/19
+    default:   Verifying        : python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_   12/19
+    default:   Verifying        : python3-libsemanage-2.9-6.el8.x86_64                 13/19
+    default:   Verifying        : python3-policycoreutils-2.9-16.0.1.el8.noarch        14/19
+    default:   Verifying        : python3-setools-4.3.0-2.el8.x86_64                   15/19
+    default:   Verifying        : container-selinux-2:2.173.0-1.module+el8.5.0+20494   16/19
+    default:   Verifying        : fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c   17/19
+    default:   Verifying        : libslirp-4.4.0-1.module+el8.5.0+20416+d687fed7.x86   18/19
+    default:   Verifying        : slirp4netns-1.1.8-1.module+el8.5.0+20416+d687fed7.   19/19
+    default:
+    default: Installed:
+    default:   checkpolicy-2.9-1.el8.x86_64
+    default:   container-selinux-2:2.173.0-1.module+el8.5.0+20494+0311868c.noarch
+    default:   containerd.io-1.4.12-3.1.el8.x86_64
+    default:   docker-ce-3:20.10.12-3.el8.x86_64
+    default:   docker-ce-cli-1:20.10.12-3.el8.x86_64
+    default:   docker-ce-rootless-extras-20.10.12-3.el8.x86_64
+    default:   docker-scan-plugin-0.12.0-3.el8.x86_64
+    default:   fuse-common-3.2.1-12.0.3.el8.x86_64
+    default:   fuse-overlayfs-1.8-1.module+el8.5.0+20494+0311868c.x86_64
+    default:   fuse3-3.2.1-12.0.3.el8.x86_64
+    default:   fuse3-libs-3.2.1-12.0.3.el8.x86_64
+    default:   libcgroup-0.41-19.el8.x86_64
+    default:   libslirp-4.4.0-1.module+el8.5.0+20416+d687fed7.x86_64
+    default:   policycoreutils-python-utils-2.9-16.0.1.el8.noarch
+    default:   python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64
+    default:   python3-libsemanage-2.9-6.el8.x86_64
+    default:   python3-policycoreutils-2.9-16.0.1.el8.noarch
+    default:   python3-setools-4.3.0-2.el8.x86_64
+    default:   slirp4netns-1.1.8-1.module+el8.5.0+20416+d687fed7.x86_64
+    default:
+    default: Complete!
+    default: Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+    default: Registrando o usuário vagrant para utilizar o docker.
+    default: groupadd: group 'docker' already exists
+    default: Finalização da instalação do docker.
+PS C:\Erico\COMPASS\Trabalho_Final> ls
+
+
+    Diretório: C:\Erico\COMPASS\Trabalho_Final
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/02/2022     17:09                .vagrant
+d-----        22/02/2022     17:39                configs
+d-----        25/02/2022     19:00                manifests
+d-----        25/02/2022     19:27                scripts
+-a----        08/02/2022     15:43           4847 #Vagrantfile
+-a----        02/03/2022     13:46            505 jenkins-deploy.yaml
+-a----        03/03/2022     12:07            183 jenkins-service.yaml
+-a----        25/02/2022     19:44       46592000 kubectl
+-a----        25/02/2022     19:44             64 kubectl.sha256
+-a----        25/02/2022     19:45       72651748 minikube-linux-amd64
+-a----        02/03/2022     15:26            879 problemas.txt
+-a----        18/02/2022     14:29           1204 Tarefa.txt
+-a----        02/03/2022     16:20           4885 Vagrantfile
+-a----        22/02/2022     17:31            330 Vagrantfile_do_Gabriel
+
+
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant ssh
+
+Welcome to Oracle Linux Server release 8.5 (GNU/Linux 5.4.17-2136.302.7.2.2.el8uek.x86_64)
+
+The Oracle Linux End-User License Agreement can be viewed here:
+
+  * /usr/share/eula/eula.en_US
+
+For additional packages, updates, documentation and community help, see:
+
+  * https://yum.oracle.com/
+
+[vagrant@localhost ~]$ ls
+[vagrant@localhost ~]$ cd /vagrant/
+[vagrant@localhost vagrant]$ ls
+ configs                kubectl          minikube-linux-amd64   Tarefa.txt      Vagrantfile_do_Gabriel
+ jenkins-deploy.yaml    kubectl.sha256   problemas.txt         '#Vagrantfile'
+ jenkins-service.yaml   manifests        scripts                Vagrantfile
+[vagrant@localhost vagrant]$ sh ./kubectl
+./kubectl: ./kubectl: cannot execute binary file
+[vagrant@localhost vagrant]$ sh ./scripts/kubectl
+sh: ./scripts/kubectl: No such file or directory
+[vagrant@localhost vagrant]$ cd scripts/
+[vagrant@localhost scripts]$ ls
+comandos_minikube.txt  docker.sh  get-docker.sh  jenkins.sh  kubectl.sh  kubectl.sha256  minikube.sh
+[vagrant@localhost scripts]$ cd ..
+[vagrant@localhost vagrant]$ sh ./scripts/kubectl.sh
+Baixando binário do kubectl.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   154  100   154    0     0    684      0 --:--:-- --:--:-- --:--:--   687
+100 44.4M  100 44.4M    0     0  4261k      0  0:00:10  0:00:10 --:--:-- 4834k
+Validando binário baixado
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   154  100   154    0     0    684      0 --:--:-- --:--:-- --:--:--   684
+100    64  100    64    0     0    171      0 --:--:-- --:--:-- --:--:--   171
+kubectl: OK
+Instalando o kubectl
+Mostrando versão instalada:
+Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.4", GitCommit:"e6c093d87ea4cbb530a7b2ae91e54c0842d8308a", GitTreeState:"clean", BuildDate:"2022-02-16T12:38:05Z", GoVersion:"go1.17.7", Compiler:"gc", Platform:"linux/amd64"}
+[vagrant@localhost vagrant]$ sh ./scripts/minikube.sh
+Instalando o minikube.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 69.2M  100 69.2M    0     0  3946k      0  0:00:17  0:00:17 --:--:-- 4168k
+[vagrant@localhost vagrant]$ exit
+logout
+Connection to 127.0.0.1 closed.
+PS C:\Erico\COMPASS\Trabalho_Final> vagrant halt
+==> default: Attempting graceful shutdown of VM...
+    default: Guest communication could not be established! This is usually because
+    default: SSH is not running, the authentication information was changed,
+    default: or some other networking issue. Vagrant will force halt, if
+    default: capable.
+==> default: Forcing shutdown of VM...
+PS C:\Erico\COMPASS\Trabalho_Final>
